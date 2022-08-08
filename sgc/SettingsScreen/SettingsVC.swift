@@ -2,7 +2,7 @@
 //  SettingsVC.swift
 //  sgc
 //
-//  Created by roey ben arieh on 07/08/2022.
+//  Created by roey ben arieh on 08/08/2022.
 //
 
 import UIKit

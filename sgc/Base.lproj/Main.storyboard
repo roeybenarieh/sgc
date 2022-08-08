@@ -11,7 +11,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Zi1-v4-qoP">
             <objects>
-                <tabBarController id="0V7-xz-afA" sceneMemberID="viewController">
+                <tabBarController id="0V7-xz-afA" customClass="TabBarController" customModule="sgc" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GA3-wj-xcL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -22,12 +22,28 @@
                         <segue destination="kjE-Tc-M5X" kind="relationship" relationship="viewControllers" id="39Z-hn-52l"/>
                         <segue destination="rfG-FI-KvC" kind="relationship" relationship="viewControllers" id="Bu4-YI-kyf"/>
                         <segue destination="43o-bh-DRU" kind="relationship" relationship="viewControllers" id="i7Y-uC-Gm3"/>
-                        <segue destination="J7m-ns-EoE" kind="relationship" relationship="viewControllers" id="PAo-iP-Y2m"/>
+                        <segue destination="B5e-iH-mfG" kind="relationship" relationship="viewControllers" id="Bnm-o9-njt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcx-tP-fCR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2349" y="-5"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="MLw-WG-tdT">
+            <objects>
+                <viewController id="B5e-iH-mfG" customClass="SettingsVC" customModule="sgc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MjD-mz-KMu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Mq9-4N-OV1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="0nc-qy-4j8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gFu-6h-IS7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1014" y="-202"/>
         </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
@@ -36,14 +52,6 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmM-cw-AAZ">
-                                <rect key="frame" x="154" y="181" width="95" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="click me"/>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -100,22 +108,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0y-bP-NhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2350" y="-837"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="dKI-6e-IIw">
-            <objects>
-                <viewController id="J7m-ns-EoE" customClass="SettingsVC" customModule="sgc" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Zvw-ng-MWB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="KBg-TZ-yN4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="BxJ-fy-Ne8"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sPb-Kd-dOw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1087" y="-202"/>
         </scene>
     </scenes>
     <resources>
