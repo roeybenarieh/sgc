@@ -97,7 +97,7 @@
         <scene sceneID="psD-SD-mRW">
             <objects>
                 <viewController id="43o-bh-DRU" customClass="SimulatorVC" customModule="sgc" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Kwb-nO-12Z" customClass="S">
+                    <view key="view" contentMode="scaleToFill" id="Kwb-nO-12Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="dGr-sr-wBY"/>
