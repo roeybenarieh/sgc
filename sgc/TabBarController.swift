@@ -43,7 +43,7 @@ class TabBarControllerr: UITabBarController, BluetoothSerialDelegate {
         // making sure it is connected
         Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.connectTimeOut), userInfo: nil, repeats: false)
         //making the color of the tabbar green
-        cahngeTabBarColor(color: UIColor.systemGreen)
+        changeTabBarColor(color: UIColor.systemGreen)
     }
     
     /// called when CBCentralManager changes (e.g. when bluetooth is turned on/off)
@@ -60,7 +60,7 @@ class TabBarControllerr: UITabBarController, BluetoothSerialDelegate {
     /// Called when a peripheral disconnected
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
         //TODO: finish this?
-        cahngeTabBarColor(color: UIColor.systemRed)
+        changeTabBarColor(color: UIColor.systemRed)
         serial.startScan()
         print("something disconnect")
     }
@@ -86,7 +86,7 @@ class TabBarControllerr: UITabBarController, BluetoothSerialDelegate {
          */
     }
     
-    public func cahngeTabBarColor(color:UIColor){
+    public func changeTabBarColor(color:UIColor){
         self.tabBar.backgroundColor = color
     }
     
