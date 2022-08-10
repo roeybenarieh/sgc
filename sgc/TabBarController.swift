@@ -20,14 +20,6 @@ class TabBarController: UITabBarController, BluetoothSerialDelegate {
     @IBOutlet weak var TabBar: UITabBar!
     
     
-    //MARK: variables
-    
-    /// in simple words: hold the list of all of the found bluetooth modules
-    /// The peripherals that have been discovered (no duplicates and sorted by asc RSSI)
-    var peripherals: [(peripheral: CBPeripheral, RSSI: Float)] = []
-    //TODO: change this from a list to a single value
-    
-    
     //MARK: UITabBarController
     
     override func viewDidLoad() {
@@ -44,30 +36,19 @@ class TabBarController: UITabBarController, BluetoothSerialDelegate {
     //MARK: BluetoothSerialDelegate
     
     func serialDidDiscoverPeripheral(_ peripheral: CBPeripheral, RSSI: NSNumber?) {
-        print("discovered new peripheral")
-        // check whether it is a duplicate
-        for exisiting in peripherals {
-            if exisiting.peripheral.identifier == peripheral.identifier { return }
-        }
+        helper.addPeripheral(peripheral, RSSI: RSSI)
         
-        // add to the array, next sort & reload
-        let theRSSI = RSSI?.floatValue ?? 0.0
-        peripherals.append((peripheral: peripheral, RSSI: theRSSI))
-        peripherals.sort { $0.RSSI < $1.RSSI }
-        
-        if peripherals.count == 1{
-            print("all2")
-            //TODO: finish this
-            //found a peripheral stop scanning
-            serial.stopScan()
-            // connect to the peripheral
-            let selectedPeripheral = peripherals[0].peripheral
-            serial.connectToPeripheral(selectedPeripheral)
-            // making sure it is connected
-            Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.connectTimeOut), userInfo: nil, repeats: false)
-            //making the color of the tabbar green
-            TabBar.backgroundColor = UIColor.systemGreen// your color
-        }
+        print("connecting to the first peripheral found")
+        //TODO: finish this
+        //found a peripheral stop scanning
+        serial.stopScan()
+        // connect to the peripheral
+        let selectedPeripheral = helper.peripherals[0].peripheral
+        serial.connectToPeripheral(selectedPeripheral)
+        // making sure it is connected
+        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.connectTimeOut), userInfo: nil, repeats: false)
+        //making the color of the tabbar green
+        cahngeTabBArColor(color: UIColor.systemGreen)
     }
     
     /// called when CBCentralManager changes (e.g. when bluetooth is turned on/off)
@@ -79,13 +60,13 @@ class TabBarController: UITabBarController, BluetoothSerialDelegate {
         }
         else{ ///Bluetooth is off
             NotificationCenter.default.post(name: Notification.Name(rawValue: "reloadStartViewController"), object: self)
-            dismiss(animated: true, completion: nil)
         }
     }
     /// Called when a peripheral disconnected
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
-        //TODO: finish this
-        peripherals = []
+        //TODO: finish this?
+        cahngeTabBArColor(color: UIColor.systemRed)
+        serial.startScan()
         print("something disconnect")
     }
 
@@ -108,6 +89,10 @@ class TabBarController: UITabBarController, BluetoothSerialDelegate {
             peripherals = []
         }
          */
+    }
+    
+    public func cahngeTabBArColor(color:UIColor){
+        TabBar.backgroundColor = color
     }
     
     /*

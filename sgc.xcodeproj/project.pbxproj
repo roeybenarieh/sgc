@@ -19,6 +19,7 @@
 		142712CE289FC48A00478A6F /* SimulatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142712CD289FC48A00478A6F /* SimulatorVC.swift */; };
 		142712D7289FF68700478A6F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142712D6289FF68700478A6F /* TabBarController.swift */; };
 		142712DB28A100D700478A6F /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142712DA28A100D700478A6F /* SettingsVC.swift */; };
+		1440932828A3918B008CEFFD /* BluetoothHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1440932728A3918B008CEFFD /* BluetoothHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		142712CD289FC48A00478A6F /* SimulatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorVC.swift; sourceTree = "<group>"; };
 		142712D6289FF68700478A6F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		142712DA28A100D700478A6F /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		1440932728A3918B008CEFFD /* BluetoothHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,15 +70,16 @@
 		142712B1289FAA3000478A6F /* sgc */ = {
 			isa = PBXGroup;
 			children = (
-				142712D6289FF68700478A6F /* TabBarController.swift */,
 				142712B2289FAA3000478A6F /* AppDelegate.swift */,
 				142712B4289FAA3000478A6F /* SceneDelegate.swift */,
+				142712D6289FF68700478A6F /* TabBarController.swift */,
 				142712D1289FF2FD00478A6F /* HomeScreen */,
 				142712D2289FF30C00478A6F /* InjectionScreen */,
 				142712D3289FF32A00478A6F /* HistoryScreen */,
 				142712D4289FF33C00478A6F /* SimulatorScreen */,
 				142712D5289FF34300478A6F /* SettingsScreen */,
 				142712C6289FAAC300478A6F /* BluetoothSerial.swift */,
+				1440932728A3918B008CEFFD /* BluetoothHelper.swift */,
 				142712B8289FAA3000478A6F /* Main.storyboard */,
 				142712BB289FAA3100478A6F /* Assets.xcassets */,
 				142712BD289FAA3100478A6F /* LaunchScreen.storyboard */,
@@ -199,6 +202,7 @@
 			files = (
 				142712D7289FF68700478A6F /* TabBarController.swift in Sources */,
 				142712B7289FAA3000478A6F /* HomeVC.swift in Sources */,
+				1440932828A3918B008CEFFD /* BluetoothHelper.swift in Sources */,
 				142712B3289FAA3000478A6F /* AppDelegate.swift in Sources */,
 				142712C7289FAAC300478A6F /* BluetoothSerial.swift in Sources */,
 				142712CA289FC2F600478A6F /* HistoryVC.swift in Sources */,
