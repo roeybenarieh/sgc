@@ -15,11 +15,6 @@ class TabBarController: UITabBarController, BluetoothSerialDelegate {
     /// a value that can be edited in the storyboard
     @IBInspectable var initialIndex: Int = 0 ///the first view that will be displayed
     
-    //MARK: IBOutlet
-    
-    @IBOutlet weak var TabBar: UITabBar!
-    
-    
     //MARK: UITabBarController
     
     override func viewDidLoad() {
@@ -92,7 +87,7 @@ class TabBarController: UITabBarController, BluetoothSerialDelegate {
     }
     
     public func cahngeTabBArColor(color:UIColor){
-        TabBar.backgroundColor = color
+        self.tabBar.backgroundColor = color
     }
     
     /*
