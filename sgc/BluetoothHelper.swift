@@ -13,7 +13,7 @@ class BluetoothHelper: BluetoothSerialDelegate{
     
     //MARK: variables
     
-    /// list of all of the found bluetooth modules
+    /// list of all of the found bluetooth modules sorted by how well my device can hear it's signal (RSSI)
     var peripherals: [(peripheral: CBPeripheral, RSSI: Float)] = []
     
     
@@ -82,7 +82,7 @@ class BluetoothHelper: BluetoothSerialDelegate{
     @objc func connectTimeOut() {
         
         // don't if we've already connected
-        if let _ = serial.connectedPeripheral {
+        if serial.connectedPeripheral != nil && serial.isReady{
             print("the connection is working good")
             return
         }
