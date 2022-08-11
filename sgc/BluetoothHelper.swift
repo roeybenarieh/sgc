@@ -88,6 +88,7 @@ class BluetoothHelper: BluetoothSerialDelegate{
         }
         else{
             notifyBluetoothConnectionChanged(connectedToBluetooth:false)
+            serial.disconnect()
             serial.startScan()
             print("bluetooth got disconnected after 10 seconds")
         }
