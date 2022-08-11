@@ -8,6 +8,11 @@
 import Foundation
 import CoreBluetooth
 
+public let pressOk   = "0" , pressMiddle = "0"
+public let pressUp   = "1"
+public let wakeUp    = "2" , turnOn = "2"
+public let pressDown = "3"
+
 var Bhelper: BluetoothHelper!
 class BluetoothHelper: BluetoothSerialDelegate{
     
@@ -97,5 +102,11 @@ class BluetoothHelper: BluetoothSerialDelegate{
     /// formating a notification post about a change in bluetooth connection
     func notifyBluetoothConnectionChanged(connectedToBluetooth:String){
         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "Bluetoothchange"), object: nil, userInfo: ["connectedToBluetooth" : connectedToBluetooth])
+    }
+    ///sends message to the connected peripheral
+    func sendMessage(message:String){
+        if serial.isReady{
+            serial.sendMessageToDevice(message)
+        }
     }
 }
