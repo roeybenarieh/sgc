@@ -44,10 +44,10 @@ class BluetoothHelper: BluetoothSerialDelegate{
             // connect to the peripheral
             let selectedPeripheral = peripherals[0].peripheral
             serial.connectToPeripheral(selectedPeripheral)
-            // making sure it's connected in 10sec
-            Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.connectTimeOut), userInfo: nil, repeats: false)
+            // making sure it's connected in 5sec
+            Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.connectTimeOut), userInfo: nil, repeats: false)
             //notify views that a new connection established
-            notifyBluetoothConnectionChanged(connectedToBluetooth:true)
+            notifyBluetoothConnectionChanged(connectedToBluetooth:"trying")
         }
     }
     
@@ -71,30 +71,31 @@ class BluetoothHelper: BluetoothSerialDelegate{
                 break
             }
         }
-        notifyBluetoothConnectionChanged(connectedToBluetooth:false)
+        notifyBluetoothConnectionChanged(connectedToBluetooth:"false")
         serial.startScan()
         print("something disconnected")
     }
     
     //MARK: functions
     
-    ///Should be called 10s after we've begun connecting, it makes sure the connection is ok
+    ///Should be called 5s after we've begun connecting, it makes sure the connection is ok
     @objc func connectTimeOut() {
         
         // don't if we've already connected
         if serial.connectedPeripheral != nil && serial.isReady{
+            notifyBluetoothConnectionChanged(connectedToBluetooth:"true")
             print("the connection is working good")
             return
         }
         else{
-            notifyBluetoothConnectionChanged(connectedToBluetooth:false)
+            notifyBluetoothConnectionChanged(connectedToBluetooth:"false")
             serial.disconnect()
             serial.startScan()
             print("bluetooth got disconnected after 10 seconds")
         }
     }
     /// formating a notification post about a change in bluetooth connection
-    func notifyBluetoothConnectionChanged(connectedToBluetooth:Bool){
+    func notifyBluetoothConnectionChanged(connectedToBluetooth:String){
         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "Bluetoothchange"), object: nil, userInfo: ["connectedToBluetooth" : connectedToBluetooth])
     }
 }

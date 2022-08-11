@@ -36,11 +36,14 @@ class TabBarController: UITabBarController {
     ///function that listen when a connection has changed and act accordingly
     @objc func bluetoothDisconnected(notification:NSNotification){
         if let info = notification.userInfo{
-            let connected: Bool = info["connectedToBluetooth"] as! Bool
-            if connected{
+            let connected: String = info["connectedToBluetooth"] as! String
+            if connected == "true"{
                 changeTabBarColor(color:UIColor.systemGreen)
             }
-            else{
+            else if connected == "trying"{
+                changeTabBarColor(color:UIColor.systemOrange)
+            }
+            else{ // =="false"
                 changeTabBarColor(color:UIColor.systemRed)
             }
         }
