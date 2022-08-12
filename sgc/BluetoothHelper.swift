@@ -21,6 +21,7 @@ class BluetoothHelper: BluetoothSerialDelegate{
     /// list of all of the found bluetooth modules sorted by how well my device can hear it's signal (RSSI)
     var peripherals: [(peripheral: CBPeripheral, RSSI: Float)] = []
     
+    var timer : Timer! = nil
     
     //MARK: initializer
     
@@ -49,8 +50,8 @@ class BluetoothHelper: BluetoothSerialDelegate{
             // connect to the peripheral
             let selectedPeripheral = peripherals[0].peripheral
             serial.connectToPeripheral(selectedPeripheral)
-            // making sure it's connected in 5sec
-            Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.connectTimeOut), userInfo: nil, repeats: false)
+            // making sure it's connected in every second for 15sec
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.connectTimeOut), userInfo: nil, repeats: true)
             //notify views that a new connection established
             notifyBluetoothConnectionChanged(connectedToBluetooth:"trying")
         }
@@ -89,21 +90,26 @@ class BluetoothHelper: BluetoothSerialDelegate{
     
     //MARK: functions
     
+    var secondsPased: Int = 0
     ///Should be called 5s after we've begun connecting, it makes sure the connection is ok
     @objc func connectTimeOut() {
-        
+        secondsPased += 1
         // don't if we've already connected
         if serial.connectedPeripheral != nil && serial.isReady{
             notifyBluetoothConnectionChanged(connectedToBluetooth:"true")
-            print("the connection is working good")
-            return
+            finishLoop()
         }
-        else{
+        else if secondsPased == 15{
             notifyBluetoothConnectionChanged(connectedToBluetooth:"false")
             serial.disconnect()
             serial.startScan()
-            print("bluetooth got disconnected after 10 seconds")
+            print("bluetooth got disconnected after 15 seconds")
+            finishLoop()
         }
+    }
+    private func finishLoop(){
+        secondsPased = 0
+        timer.invalidate()
     }
     
     /// formating a notification post about a change in bluetooth connection
