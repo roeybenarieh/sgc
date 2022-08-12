@@ -31,7 +31,7 @@ void setup() {
   Serial.begin(9600);                     //initialize serial COM at 9600 baudrate
   Serial.println("HM10 serial started at 9600");
   Serial.println("you can disconnect the usb cable from the arduino and you are all set up :-)");
-  //Serial.end();//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Serial.end();
 
   //initialize the serial for the Bluetooth module
   HM10.begin(9600); // Sets HM10 the speed (baud rate) for the serial communication 
@@ -47,23 +47,39 @@ void loop() {
   while (HM10.available() > 0) {   // if HM10 sends something then read
     //Return a character that was received on the RX pin of the SoftwareSerial objecto.
     String data = HM10.readString(); //Serial.readStringUntil('a character that will make the string to stop')
-    Serial.println(data);
-    HM10.write(confirm_message);
     digitalWrite (LED, HIGH);
-  
-    if (data == press_up) {//press up
-      push_button_up();
+    if(data.startsWith("in")){//injection format
+      inject(data.substring(2,data.length()).toInt());
+      HM10.write(confirm_message);
     }
-    else if (data == press_ok) {//press ok
-      push_button_ok();
-    }
-    else if (data == turn_device_on) {//Turn on the device
-      wakeup_pin_device();
+    else{
+      if (data == press_up) {//press up
+        push_button_up();
+      }
+      else if (data == press_ok) {//press ok
+        push_button_ok();
+      }
+      else if (data == turn_device_on) {//Turn on the device
+        wakeup_pin_device();
+      }
     }
     digitalWrite(LED, LOW);
     HM10.flush();
   }
 }
+void inject(int amount){ //finish this
+  wakeup_pin_device();
+  push_button_ok(); delay(500); push_button_ok();
+  delay(15000); //wait for the device to connect to the insulin pump
+  for(int i = 0; i < amount; i++){
+    push_button_up();
+    delay(500);
+  }
+  push_button_ok(); delay(500); push_button_ok();
+  delay(15000); //wait for the device to connect to the insulin pump 
+  push_button_ok(); //come back to the main menu
+}
+
 void push_button_up(){
   push_button(up, 200);
 }
@@ -74,10 +90,13 @@ void push_button_ok(){
 
 void wakeup_pin_device(){
   push_button(wakeup_pin, 7000);
+  delay(15000);//asuming there is low buttery alert(whick takes screen time)
 }
 //presstime is how much time the button is pressed in seconds!!
-void push_button(int pin, int mil_presstime){
+void push_button(int pin, int mil_presstime){ // 1000 milsec = 1 sec
+  digitalWrite (LED, HIGH);
   digitalWrite (pin, HIGH);
   delay(mil_presstime);
   digitalWrite (pin, LOW);
+  digitalWrite (LED, LOW);
 }
