@@ -56,6 +56,12 @@ class BluetoothHelper: BluetoothSerialDelegate{
         }
     }
     
+    ///called when a new message received, only happens when the arduino sends a confirmation of injection message
+    func serialDidReceiveString(_ message: String){
+        //ignore the message since its just the same confirmation string(no other messages are sent from the arduino)
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil)
+    }
+    
     /// called when CBCentralManager changes (e.g. when bluetooth is turned on/off)
     func serialDidChangeState() {
         if serial.centralManager.state == .poweredOn {
@@ -99,14 +105,20 @@ class BluetoothHelper: BluetoothSerialDelegate{
             print("bluetooth got disconnected after 10 seconds")
         }
     }
+    
     /// formating a notification post about a change in bluetooth connection
-    func notifyBluetoothConnectionChanged(connectedToBluetooth:String){
+    private func notifyBluetoothConnectionChanged(connectedToBluetooth:String){
         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "Bluetoothchange"), object: nil, userInfo: ["connectedToBluetooth" : connectedToBluetooth])
     }
+    
     ///sends message to the connected peripheral
     func sendMessage(message:String){
         if serial.isReady{
             serial.sendMessageToDevice(message)
         }
+    }
+    ///sends a formated injection message
+    func sendInjection(amount:Int){
+        sendMessage(message: "in" + String(amount))
     }
 }

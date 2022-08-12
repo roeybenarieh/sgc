@@ -68,10 +68,111 @@
                     <view key="view" contentMode="scaleToFill" id="SgU-Io-r90">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: waiting for command" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ur6-B7-bPb" userLabel="Status">
+                                <rect key="frame" x="0.0" y="690" width="375" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" systemColor="systemBlueColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="KJA-1E-dFE">
+                                <rect key="frame" x="15" y="268.66666666666669" width="344" height="275.00000000000006"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="GXd-nJ-vjm" userLabel="Presets">
+                                        <rect key="frame" x="0.0" y="0.0" width="344" height="51"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDx-Gp-JSY" userLabel="Preset1">
+                                                <rect key="frame" x="0.0" y="0.0" width="104.66666666666667" height="51"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="1.0">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="presetOne:" destination="kjE-Tc-M5X" eventType="touchUpInside" id="Cfy-RU-XmH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiM-bO-Re1" userLabel="Preset2">
+                                                <rect key="frame" x="119.66666666666666" y="0.0" width="104.66666666666666" height="51"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="2.0">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="presetTwo:" destination="kjE-Tc-M5X" eventType="touchUpInside" id="BbC-Ig-aOZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCh-mf-T0t" userLabel="Preset3">
+                                                <rect key="frame" x="239.33333333333334" y="0.0" width="104.66666666666666" height="51"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="3.0">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="31"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="presetThree:" destination="kjE-Tc-M5X" eventType="touchUpInside" id="E5S-Pu-xEz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Oad-dg-eiz" userLabel="ManualAdjustment">
+                                        <rect key="frame" x="0.0" y="101" width="344" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="457-CD-L85" userLabel="minus">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="56"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="-">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="35"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="ClickMinus:" destination="kjE-Tc-M5X" eventType="touchUpInside" id="fxI-Rz-ExV"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zX-YF-IHb" userLabel="Amount">
+                                                <rect key="frame" x="122" y="0.0" width="100" height="56"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tO-kF-VLy" userLabel="plus">
+                                                <rect key="frame" x="244" y="0.0" width="100" height="56"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="+">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="35"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="ClickPlus:" destination="kjE-Tc-M5X" eventType="touchUpInside" id="Nxk-Me-6bH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohg-Ln-0IF" userLabel="Inject">
+                                        <rect key="frame" x="0.0" y="207" width="344" height="68"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Inject">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="45"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="Inject:" destination="kjE-Tc-M5X" eventType="touchUpInside" id="DMR-v1-Zfp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="eCU-nt-mAU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KJA-1E-dFE" firstAttribute="centerY" secondItem="SgU-Io-r90" secondAttribute="centerY" id="8eZ-Ao-rcG"/>
+                            <constraint firstItem="eCU-nt-mAU" firstAttribute="trailing" secondItem="KJA-1E-dFE" secondAttribute="trailing" constant="16" id="I1H-Vv-vsG"/>
+                            <constraint firstItem="KJA-1E-dFE" firstAttribute="leading" secondItem="eCU-nt-mAU" secondAttribute="leading" constant="15" id="JnH-m4-Uke"/>
+                            <constraint firstItem="eCU-nt-mAU" firstAttribute="bottom" secondItem="ur6-B7-bPb" secondAttribute="bottom" constant="15" id="TNH-Ii-rfm"/>
+                            <constraint firstItem="ur6-B7-bPb" firstAttribute="trailing" secondItem="eCU-nt-mAU" secondAttribute="trailing" id="Y3B-Gh-tqq"/>
+                            <constraint firstItem="ur6-B7-bPb" firstAttribute="leading" secondItem="eCU-nt-mAU" secondAttribute="leading" id="YJK-Au-Fhr"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Inject" image="cross.vial.fill" catalog="system" id="B2L-4o-Hoo"/>
+                    <connections>
+                        <outlet property="InjectionAmount" destination="0zX-YF-IHb" id="IWW-6m-3kc"/>
+                        <outlet property="Status" destination="ur6-B7-bPb" id="QXq-Hj-Qcw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iSt-gV-5VG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -167,6 +268,9 @@
         <image name="scale.3d" catalog="system" width="128" height="112"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
