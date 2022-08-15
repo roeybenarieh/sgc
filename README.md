@@ -7,7 +7,10 @@ all modification and issues are welcome :-)
 
 things to do:
 1) dezine visual functionality for every aspect of the app
-2) create class for sending messaged to the arduino
-3) create class for handeling dexcom api
+2) create class for sending messaged to the arduino - Done
+3) create class for handeling dexcom api 
 4) create class for evaluating the injection sugestion
-5) connect between the visual and classes functionality
+5) connect between the visual and classes functionality - Done
+
+I thought about it and its best this app will be existed as a part of https://github.com/LoopKit/Loop
+this way there will be a better UI and adding features: glucose graph prediction & insulin correction estimation
