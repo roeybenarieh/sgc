@@ -19,13 +19,14 @@ class SettingsVC: UIViewController, WKNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initHandler()
     }
     
     
     //MARK: IBAction button function
     //step two in dexcomp api
     @IBAction func openDexcomAuthenticationPage(){
-        let urlstr: String = "\(baseApiUrl)login?client_id=JVnbHyvKZUSBOTFlkcD0ZUs8vpuLG3WS&redirect_uri=\(redirectUrl)&response_type=code&scope=offline_access&state=\(mystate)"
+        let urlstr: String = "\(baseAuthenticationUrl)login?client_id=\(clientId)&redirect_uri=\(redirectUrl)&response_type=code&scope=offline_access&state=\(mystate)"
         webview.load(URLRequest(url: URL(string: urlstr)!))
         webview.navigationDelegate = self //telling the web view that this obj handle its navigation
     }
