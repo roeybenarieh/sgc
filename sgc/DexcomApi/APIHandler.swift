@@ -104,7 +104,10 @@ func refreshTokens(){
 }
 
 //MARK: Obtaining data
-func getGlucoseReadings(startdate: Date, enddate: Date = Date()){
+func getGlucoseReadings(startdate: Date, enddate: Date = Date()) -> [[String : Any]] {
+    if(token == nil){
+        return []
+    }
     //URL
     //sample url:
     //https://api.dexcom.com/v2/users/self/egvs?startDate=2017-06-16T15:30:00&endDate=2017-06-16T15:45:00
@@ -112,7 +115,7 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()){
     
     guard url != nil else {
         print("Error creating url object")
-        return
+        return []
     }
     
     // URL Request
@@ -130,6 +133,7 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()){
     //Get the URLSession
     let session = URLSession.shared
     
+    var evgs: [[String : Any]] = []
     //Create a data task
     let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
         if (error != nil) {
@@ -154,11 +158,12 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()){
                        "trend": "flat",
                        "trendRate": -0.5
                      },
-                    {NEXT EGVs...}
+                    {NEXT EGVs (5min befor the one above)...}
                    ]
                  }
                 */
-                print(resultdic!)
+                //returning a dictionary with only the egvs
+                evgs =  (resultdic!["egvs"] as? [[String : Any]])!
             }
             catch{
                 print("Error when parsing the api response")
@@ -167,16 +172,17 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()){
     })
     //Fire off the data task
     dataTask.resume()
+    return evgs
 }
 
-func getGlucoseReadings(numberOfCurrentValues: Int){
-    getGlucoseReadings(startdate: Calendar.current.date(byAdding: .minute, value: numberOfCurrentValues * -5, to: Date())!)
+func getGlucoseReadings(numberOfCurrentValues: Int) -> [[String : Any]] {
+    return getGlucoseReadings(startdate: Calendar.current.date(byAdding: .minute, value: numberOfCurrentValues * -5, to: Date())!)
 }
 
 //MARK: Handle errors
 func errorHandler(error: Error){
     print(error)
-    //when needing to refresh a tken than use the 'refreshToken' value
+    //when needing to refresh a token than use the 'refreshToken' value
     //when 'refreshToken' value expires ask the user to authenticate again and make token=nil
 }
 
@@ -196,7 +202,7 @@ String(Int.random(in: 0..<99999999999999999)) //rundom string for security reaso
 let clientId =
 "JVnbHyvKZUSBOTFlkcD0ZUs8vpuLG3WS"
 private let clientSecret =
-"" //you are very welcome to try using this secret :-)
+"fsO72hQlcWeXJJvT" //you are very welcome to try using this secret :-)
 
 //MARK: Variables
 private var token: String? = nil
