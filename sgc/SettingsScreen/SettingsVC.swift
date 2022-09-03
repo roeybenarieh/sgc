@@ -41,10 +41,21 @@ class SettingsVC: UIViewController, WKNavigationDelegate {
             if url.hasPrefix(redirectUrl)
             {
                 getCodeAndTokenFromRedirect(redirectUrl: url)
-                Thread.sleep(forTimeInterval: 5)
+                
+                var count = 0
+                while(!hastoken){
+                    Thread.sleep(forTimeInterval: 1)
+                    count += 1
+                    if(count >= 30){
+                        changeButtonColor(color: UIColor.systemRed)
+                        changeButtonText(text: "Error:api response timeout")
+                    }
+                }
                 if hastoken{
                     changeButtonColor(color: UIColor.systemGreen)
                     changeButtonText(text: "Dexcom account connected")
+                    
+                    _ = Timer.scheduledTimer(timeInterval: 60 * 5, target: self, selector: #selector(getEVGs), userInfo: nil, repeats: true)
                 }
                 else{
                     changeButtonColor(color: UIColor.systemRed)
@@ -53,6 +64,9 @@ class SettingsVC: UIViewController, WKNavigationDelegate {
             }
         }
         decisionHandler(.allow)
+    }
+    @objc func getEVGs(){
+        getGlucoseReadings(numberOfCurrentValues: 10)
     }
     
     //MARK: dexcom button properties

@@ -16,8 +16,7 @@ func initHandler(){
 //MARK: Authentication
 
 //gets the code from a redirect url, than call the function that gets the token
-func getCodeFromRedirect(redirectUrl: String){
-    // YourRedirectURL?code=ACCESS_TOKEN&state=MYSENTSTATE
+func getCodeAndTokenFromRedirect(redirectUrl: String){
     let firstSplit = redirectUrl.split(separator: "?")
     let secondSplit  = firstSplit[1].split(separator: "&")
     let state = secondSplit[1].split(separator: "=")[1]
@@ -81,12 +80,6 @@ func obtainAccessToken(code: String){
             //Parse the data
             do{
                 let resultdic = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String:Any]
-                /*EXAMPLE RESPONSE WOULD LOOK LIKE:
-                ["expires_in": 7200,
-                "token_type": Bearer,
-                "access_token":{my access token},
-                "refresh_token": {my refresh token}]
-                */
                 token = resultdic!["access_token"] as? String
                 refreshToken = resultdic!["refresh_token"] as? String
             }
@@ -104,18 +97,16 @@ func refreshTokens(){
 }
 
 //MARK: Obtaining data
-func getGlucoseReadings(startdate: Date, enddate: Date = Date()) -> [[String : Any]] {
-    if(token == nil){
-        return []
+func getGlucoseReadings(startdate: Date, enddate: Date = Date()) {
+    if(!hastoken){
+        return
     }
     //URL
-    //sample url:
-    //https://api.dexcom.com/v2/users/self/egvs?startDate=2017-06-16T15:30:00&endDate=2017-06-16T15:45:00
     let url = URL(string: "\(baseEndpointsUrl)egvs?startDate=\(dateFormat.string(from: startdate))&endDate=\(dateFormat.string(from: enddate))")
     
     guard url != nil else {
         print("Error creating url object")
-        return []
+        return
     }
     
     // URL Request
@@ -133,7 +124,6 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()) -> [[String : A
     //Get the URLSession
     let session = URLSession.shared
     
-    var evgs: [[String : Any]] = []
     //Create a data task
     let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
         if (error != nil) {
@@ -142,28 +132,15 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()) -> [[String : A
         else { //Got a response from the api
             //Parse the data
             do{
+                let httpResponse = response as! HTTPURLResponse
+                print(httpResponse.statusCode)
+                
                 let resultdic = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String:Any]
-                /*EXAMPLE RESPONSE WOULD LOOK LIKE:
-                 {
-                   "unit": "mg/dL",
-                   "rateUnit": "mg/dL/min",
-                   "egvs": [
-                     {
-                       "systemTime": "2018-02-06T09:12:35",
-                       "displayTime": "2018-02-06T01:12:35",
-                       "value": 122,
-                       "realtimeValue": 121,
-                       "smoothedValue": 122,
-                       "status": null,
-                       "trend": "flat",
-                       "trendRate": -0.5
-                     },
-                    {NEXT EGVs (5min befor the one above)...}
-                   ]
-                 }
-                */
+                let result = resultdic!["egvs"]
                 //returning a dictionary with only the egvs
-                evgs =  (resultdic!["egvs"] as? [[String : Any]])!
+                print(result!)
+                let responseData:String! = String(data: data!, encoding: String.Encoding.utf8)
+                print(responseData!)
             }
             catch{
                 print("Error when parsing the api response")
@@ -172,18 +149,19 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()) -> [[String : A
     })
     //Fire off the data task
     dataTask.resume()
-    return evgs
 }
-
-func getGlucoseReadings(numberOfCurrentValues: Int) -> [[String : Any]] {
-    return getGlucoseReadings(startdate: Calendar.current.date(byAdding: .minute, value: numberOfCurrentValues * -5, to: Date())!)
+func getGlucoseReadings(numberOfCurrentValues: Int) {
+    getGlucoseReadings(startdate: Calendar.current.date(byAdding: .minute, value: numberOfCurrentValues * -5, to: Date())!)
 }
 
 //MARK: Handle errors
 func errorHandler(error: Error){
     print(error)
     //when needing to refresh a token than use the 'refreshToken' value
-    //when 'refreshToken' value expires ask the user to authenticate again and make token=nil
+    let description = error.localizedDescription
+    if description.starts(with: "100") {
+        
+    }
 }
 
 //MARK: Constants
@@ -200,10 +178,15 @@ let mystate =
 String(Int.random(in: 0..<99999999999999999)) //rundom string for security reasons
 
 let clientId =
-"JVnbHyvKZUSBOTFlkcD0ZUs8vpuLG3WS"
+"zIbQQSW0a5GU1t7ku0Fhe1jFE9abTFqj"
 private let clientSecret =
-"fsO72hQlcWeXJJvT" //you are very welcome to try using this secret :-)
+"" //you are very welcome to try using this secret :-)
 
 //MARK: Variables
 private var token: String? = nil
 private var refreshToken: String? = nil
+public var hastoken: Bool{
+    get{
+        return token != nil
+    }
+}

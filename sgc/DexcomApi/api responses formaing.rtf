@@ -1,0 +1,123 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fswiss\fcharset0 Helvetica-Bold;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1026\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \ul \ulc0 API - Authentication\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulc0 step three in dexcom api: authorisation code\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+\cf0 \ulnone the code is retrieved for the redirect url in the format:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1 \cf0 // YourRedirectURL?code=ACCESS_TOKEN&state=MYSENTSTATE
+\f0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ul \ulc0 step three in dexcom api: authorisation code\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \ulnone the token is retrieved from a json object sent from the api in the format:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1 \cf0 /*EXAMPLE RESPONSE WOULD LOOK LIKE:\
+["expires_in": 7200,\
+"token_type": Bearer,\
+"access_token":\{my access token\},\
+"refresh_token": \{my refresh token\}]\
+*/
+\f0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+
+\f2\b API - EGVS\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \ul \ulc0 obtaining egvs\
+
+\f1 \ulnone the egvs are retrieved from a json object sent from the api in the format:\
+/*EXAMPLE RESPONSE WOULD LOOK LIKE:\
+                 \{\
+                   "unit": "mg/dL",\
+                   "rateUnit": "mg/dL/min",\
+                   "egvs": [\
+                     \{\
+                       "systemTime": "2018-02-06T09:12:35",\
+                       "displayTime": "2018-02-06T01:12:35",\
+                       "value": 122,\
+                       "realtimeValue": 121,\
+                       "smoothedValue": 122,\
+                       "status": null,\
+                       "trend": "flat",\
+                       "trendRate": -0.5\
+                     \},\
+                    \{NEXT EGVs (5min before the one above)...\}\
+                   ]\
+                 \}\
+                */\
+\ul HTTP RESPONSE\
+\ulnone http response from the api is in the format:\
+<NSHTTPURLResponse: 0x6000017d53e0> \{ URL: https://api.dexcom.com/v2/users/self/egvs?startDate=2022-09-03T15:00:47&endDate=2022-09-03T15:15:49 \} \{ Status Code: 200, Headers \{\
+    "Cache-Control" =     (\
+        "no-cache, no-store, max-age=0, must-revalidate"\
+    );\
+    "Content-Encoding" =     (\
+        gzip\
+    );\
+    "Content-Type" =     (\
+        "application/json"\
+    );\
+    Date =     (\
+        "Sat, 03 Sep 2022 12:16:00 GMT"\
+    );\
+    Expires =     (\
+        0\
+    );\
+    Pragma =     (\
+        "no-cache"\
+    );\
+    Server =     (\
+        cloudflare\
+    );\
+    "Strict-Transport-Security" =     (\
+        "max-age=0"\
+    );\
+    Vary =     (\
+        "Accept-Encoding",\
+        Origin,\
+        "Access-Control-Request-Method",\
+        "Access-Control-Request-Headers"\
+    );\
+    Via =     (\
+        "1.1 google"\
+    );\
+    "cf-cache-status" =     (\
+        DYNAMIC\
+    );\
+    "cf-ray" =     (\
+        "744e69fc1a81adaf-TLV"\
+    );\
+    "referrer-policy" =     (\
+        "no-referrer"\
+    );\
+    "request-time" =     (\
+        "6 ms"\
+    );\
+    "x-b3-traceid" =     (\
+        59326e3234635055\
+    );\
+    "x-content-type-options" =     (\
+        nosniff\
+    );\
+    "x-frame-options" =     (\
+        DENY\
+    );\
+    "x-xss-protection" =     (\
+        "1 ; mode=block"\
+    );\
+\} \}\
+\
+\
+\
+}
