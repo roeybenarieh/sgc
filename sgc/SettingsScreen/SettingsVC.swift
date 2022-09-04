@@ -48,25 +48,21 @@ class SettingsVC: UIViewController, WKNavigationDelegate {
                     count += 1
                     if(count >= 30){
                         changeButtonColor(color: UIColor.systemRed)
-                        changeButtonText(text: "Error:api response timeout")
+                        changeButtonText(text: "Error: try again")
+                        break
                     }
                 }
                 if hastoken{
                     changeButtonColor(color: UIColor.systemGreen)
                     changeButtonText(text: "Dexcom account connected")
                     
-                    _ = Timer.scheduledTimer(timeInterval: 60 * 5, target: self, selector: #selector(getEVGs), userInfo: nil, repeats: true)
-                }
-                else{
-                    changeButtonColor(color: UIColor.systemRed)
-                    changeButtonText(text: "Error: try again")
+                    if #available(iOS 13, *) {
+                        scheduleBackgroundProcessing()
+                    }
                 }
             }
         }
         decisionHandler(.allow)
-    }
-    @objc func getEVGs(){
-        getGlucoseReadings(numberOfCurrentValues: 10)
     }
     
     //MARK: dexcom button properties

@@ -124,6 +124,7 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()) {
     //Get the URLSession
     let session = URLSession.shared
     
+    var performingTask = true
     //Create a data task
     let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
         if (error != nil) {
@@ -146,9 +147,20 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()) {
                 print("Error when parsing the api response")
             }
         }
+        performingTask = false
     })
     //Fire off the data task
     dataTask.resume()
+    var count = 0
+    while(performingTask){
+        Thread.sleep(forTimeInterval: 1)
+        count += 1
+        if(count >= 20){
+            dataTask.cancel()
+            print("Error: couldnt get glucose values")
+            break
+        }
+    }
 }
 func getGlucoseReadings(numberOfCurrentValues: Int) {
     getGlucoseReadings(startdate: Calendar.current.date(byAdding: .minute, value: numberOfCurrentValues * -5, to: Date())!)
@@ -180,7 +192,7 @@ String(Int.random(in: 0..<99999999999999999)) //rundom string for security reaso
 let clientId =
 "zIbQQSW0a5GU1t7ku0Fhe1jFE9abTFqj"
 private let clientSecret =
-"" //you are very welcome to try using this secret :-)
+"YgtN2mXA6HFLHk6c" //you are very welcome to try using this secret :-)
 
 //MARK: Variables
 private var token: String? = nil

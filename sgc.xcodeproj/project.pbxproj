@@ -375,6 +375,8 @@
 				DEVELOPMENT_TEAM = X7328VUX59;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sgc/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "this app uses bluetooth so it could connect to the bluetooth module";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "This app uses bluetooth to send and receive messages to/from the connected HM10 module.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -404,6 +406,8 @@
 				DEVELOPMENT_TEAM = X7328VUX59;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sgc/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "this app uses bluetooth so it could connect to the bluetooth module";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "This app uses bluetooth to send and receive messages to/from the connected HM10 module.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import BackgroundTasks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    static let appRefreshTaskId = "com.roeyswift.sgc.refreshdexcomapi"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if #available(iOS 13, *) {
+            BGTaskScheduler.shared.register(forTaskWithIdentifier: AppDelegate.appRefreshTaskId, using: nil) { task in
+                    self.handleAppRefresh(task: task as! BGProcessingTask)
+            }
+        }
         return true
     }
 
@@ -30,7 +35,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
+    func handleAppRefresh(task: BGProcessingTask) {
+        // Schedule a new refresh task.
+        scheduleBackgroundProcessing()
+        
+        print("[BGTASK] Perform bg peocess at: \(Date())")
+        getGlucoseReadings(numberOfCurrentValues: 10)
+        task.setTaskCompleted(success: true)
+    }
 }
+@available(iOS 13.0, *)
+func scheduleBackgroundProcessing() {
+    let request = BGProcessingTaskRequest(identifier: AppDelegate.appRefreshTaskId)
+        request.requiresNetworkConnectivity = true // Need to true if your task need to network process. Defaults to false.
+
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 60) // Process after 1 minutes.
+
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("Could not schedule the processing task: (error)")
+        }
+    }
 
