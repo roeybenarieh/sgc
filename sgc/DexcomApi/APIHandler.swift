@@ -96,8 +96,10 @@ func refreshTokens(){
     
 }
 
-//MARK: Obtaining data
-func getGlucoseReadings(startdate: Date, enddate: Date = Date()) {
+func getGlucoseReadings(startdate: Date, enddate: Date = Date(), maxnumofvalues: Int) {
+    let startdate = Calendar.current.date(byAdding: .month, value: -1, to: startdate)!
+    let enddate = Calendar.current.date(byAdding: .month, value: -1, to: enddate)!
+
     if(!hastoken){
         return
     }
@@ -110,8 +112,7 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()) {
     }
     
     // URL Request
-    var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
-    
+    let request = NSMutableURLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
     //Specify the header
     let headers = [
       "authorization": "Bearer \(token!)"
@@ -134,14 +135,84 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()) {
             //Parse the data
             do{
                 let httpResponse = response as! HTTPURLResponse
-                print(httpResponse.statusCode)
+                print(httpResponse)
+                
+                let responseData:String! = String(data: data!, encoding: String.Encoding.utf8)
+                print(responseData!)
                 
                 let resultdic = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String:Any]
                 let result = resultdic!["egvs"]
                 //returning a dictionary with only the egvs
                 print(result!)
+            }
+            catch{
+                print("Error when parsing the api response")
+            }
+        }
+        performingTask = false
+    })
+    //Fire off the data task
+    dataTask.resume()
+    var count = 0
+    while(performingTask){
+        Thread.sleep(forTimeInterval: 1)
+        count += 1
+        if(count >= 20){
+            dataTask.cancel()
+            print("Error: couldnt get glucose values")
+            break
+        }
+    }
+}
+//MARK: Obtaining data
+func getGlucoseReadings2(startdate: Date, enddate: Date = Date()) {
+    let startdate = Calendar.current.date(byAdding: .month, value: -1, to: startdate)!
+    let enddate = Calendar.current.date(byAdding: .month, value: -1, to: enddate)!
+
+    if(!hastoken){
+        return
+    }
+    //URL
+    let url = URL(string: "\(baseEndpointsUrl)egvs?startDate=\(dateFormat.string(from: startdate))&endDate=\(dateFormat.string(from: enddate))")
+    
+    guard url != nil else {
+        print("Error creating url object")
+        return
+    }
+    
+    // URL Request
+    let request = NSMutableURLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+    //Specify the header
+    let headers = [
+      "authorization": "Bearer \(token!)"
+    ]
+    request.allHTTPHeaderFields = headers
+    
+    //Set the request type
+    request.httpMethod = "GET"
+    
+    //Get the URLSession
+    let session = URLSession.shared
+    
+    var performingTask = true
+    //Create a data task
+    let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+        if (error != nil) {
+            errorHandler(error: error!)
+        }
+        else { //Got a response from the api
+            //Parse the data
+            do{
+                let httpResponse = response as! HTTPURLResponse
+                print(httpResponse)
+                
                 let responseData:String! = String(data: data!, encoding: String.Encoding.utf8)
                 print(responseData!)
+                
+                let resultdic = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String:Any]
+                let result = resultdic!["egvs"]
+                //returning a dictionary with only the egvs
+                print(result!)
             }
             catch{
                 print("Error when parsing the api response")
@@ -163,7 +234,7 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date()) {
     }
 }
 func getGlucoseReadings(numberOfCurrentValues: Int) {
-    getGlucoseReadings(startdate: Calendar.current.date(byAdding: .minute, value: numberOfCurrentValues * -5, to: Date())!)
+    getGlucoseReadings(startdate: Calendar.current.date(byAdding: .minute, value: numberOfCurrentValues * -5, to: Date())!, maxnumofvalues: numberOfCurrentValues)
 }
 
 //MARK: Handle errors
