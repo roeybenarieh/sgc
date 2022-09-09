@@ -166,8 +166,6 @@ func getGlucoseReadings(startdate: Date, enddate: Date = Date(), maxnumofvalues:
 }
 //MARK: Obtaining data
 func getGlucoseReadings2(startdate: Date, enddate: Date = Date()) {
-    let startdate = Calendar.current.date(byAdding: .month, value: -1, to: startdate)!
-    let enddate = Calendar.current.date(byAdding: .month, value: -1, to: enddate)!
 
     if(!hastoken){
         return
