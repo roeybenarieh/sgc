@@ -52,11 +52,11 @@ let DEXCOM_TREND_DESCRIPTIONS = [
     "falling",
     "falling quickly",
     "unable to determine trend",
-    "trend unavailable",
+    "trend unavailable"
 ]
 
-let DEXCOM_TREND_DIRECTIONS = {
-    "None": 0,  // unconfirmed
+var DEXCOM_TREND_DIRECTIONS: [String:Int] = [
+    "None": 0,
     "DoubleUp": 1,
     "SingleUp": 2,
     "FortyFiveUp": 3,
@@ -64,9 +64,9 @@ let DEXCOM_TREND_DIRECTIONS = {
     "FortyFiveDown": 5,
     "SingleDown": 6,
     "DoubleDown": 7,
-    "NotComputable": 8,  # unconfirmed
-    "RateOutOfRange": 9,  # unconfirmed
-}
+    "NotComputable": 8,
+    "RateOutOfRange": 9
+]
 
 let DEXCOM_TREND_ARROWS = ["", "↑↑", "↑", "↗", "→", "↘", "↓", "↓↓", "?", "-"]
 
