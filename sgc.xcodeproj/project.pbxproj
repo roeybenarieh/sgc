@@ -21,6 +21,7 @@
 		142712DB28A100D700478A6F /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142712DA28A100D700478A6F /* SettingsVC.swift */; };
 		142EE6C828C37D7200CDD32B /* api responses formaing.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 142EE6C728C37D7200CDD32B /* api responses formaing.rtf */; };
 		1440932828A3918B008CEFFD /* BluetoothHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1440932728A3918B008CEFFD /* BluetoothHelper.swift */; };
+		14446AE828CB70D7001F8CCC /* conts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14446AE728CB70D7001F8CCC /* conts.swift */; };
 		1474AC1A28C11C290006A71C /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474AC1928C11C290006A71C /* APIHandler.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		142712DA28A100D700478A6F /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		142EE6C728C37D7200CDD32B /* api responses formaing.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "api responses formaing.rtf"; sourceTree = "<group>"; };
 		1440932728A3918B008CEFFD /* BluetoothHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothHelper.swift; sourceTree = "<group>"; };
+		14446AE728CB70D7001F8CCC /* conts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = conts.swift; sourceTree = "<group>"; };
 		1474AC1928C11C290006A71C /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +141,7 @@
 			children = (
 				1474AC1928C11C290006A71C /* APIHandler.swift */,
 				142EE6C728C37D7200CDD32B /* api responses formaing.rtf */,
+				14446AE728CB70D7001F8CCC /* conts.swift */,
 			);
 			path = DexcomApi;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				142712B5289FAA3000478A6F /* SceneDelegate.swift in Sources */,
 				1474AC1A28C11C290006A71C /* APIHandler.swift in Sources */,
 				142712CC289FC45000478A6F /* InjectVC.swift in Sources */,
+				14446AE828CB70D7001F8CCC /* conts.swift in Sources */,
 				142712CE289FC48A00478A6F /* SimulatorVC.swift in Sources */,
 				142712DB28A100D700478A6F /* SettingsVC.swift in Sources */,
 			);
