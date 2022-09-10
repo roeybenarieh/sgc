@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         scheduleBackgroundProcessing()
         
         print("[BGTASK] Perform bg peocess at: \(Date())")
-        getGlucoseReadings(numberOfCurrentValues: 10)
+        print(dexcom.getLatestGlucoseReading()!)
         task.setTaskCompleted(success: true)
     }
 }
