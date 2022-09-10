@@ -28,6 +28,11 @@ class TabBarController: UITabBarController {
         Bhelper = BluetoothHelper()
         //listen to when a bluetooth connection has changed
         NotificationCenter.default.addObserver(self, selector: #selector(bluetoothDisconnected(notification:)), name: NSNotification.Name.init(rawValue: "Bluetoothchange"), object: nil)
+        
+        dexcom = Dexcom(username: "roeyroey2", password: "ranran2424", outsideUSA: true)
+        if #available(iOS 13, *) {
+            scheduleBackgroundProcessing()
+        }
     }
 
     

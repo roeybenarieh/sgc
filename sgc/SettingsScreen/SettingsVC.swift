@@ -19,7 +19,6 @@ class SettingsVC: UIViewController, WKNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initHandler()
     }
     
     
@@ -28,7 +27,7 @@ class SettingsVC: UIViewController, WKNavigationDelegate {
     @IBAction func openDexcomAuthenticationPage(){
         changeButtonColor(color: UIColor.systemBlue)
         changeButtonText(text: "Connect to Dexcom account")
-        let urlstr: String = "\(baseAuthenticationUrl)login?client_id=\(clientId)&redirect_uri=\(redirectUrl)&response_type=code&scope=offline_access&state=\(mystate)"
+        let urlstr: String = "https://google.com/"
         webview.load(URLRequest(url: URL(string: urlstr)!))
         webview.navigationDelegate = self //telling the web view that this obj handle its navigation
     }
@@ -37,31 +36,6 @@ class SettingsVC: UIViewController, WKNavigationDelegate {
     //MARK: webview delegates
     //step three in dexcom api
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void){
-        if let url = navigationAction.request.url?.absoluteString{
-            if url.hasPrefix(redirectUrl)
-            {
-                getCodeAndTokenFromRedirect(redirectUrl: url)
-                
-                var count = 0
-                while(!hastoken){
-                    Thread.sleep(forTimeInterval: 1)
-                    count += 1
-                    if(count >= 30){
-                        changeButtonColor(color: UIColor.systemRed)
-                        changeButtonText(text: "Error: try again")
-                        break
-                    }
-                }
-                if hastoken{
-                    changeButtonColor(color: UIColor.systemGreen)
-                    changeButtonText(text: "Dexcom account connected")
-                    
-                    if #available(iOS 13, *) {
-                        scheduleBackgroundProcessing()
-                    }
-                }
-            }
-        }
         decisionHandler(.allow)
     }
     
