@@ -62,7 +62,7 @@ class scheduler {
     func initializeTime(){
         injectionTimer = nil
         //important!!!!!!!!!! timeinterval must be more thant the time it takks the arduino to inject
-        injectionTimer = Timer.scheduledTimer(timeInterval: 60 * 0.5, target: self, selector: #selector(self.handlerInjection), userInfo: nil, repeats: true)
+        injectionTimer = Timer.scheduledTimer(timeInterval: 60 * 2.5, target: self, selector: #selector(self.handlerInjection), userInfo: nil, repeats: true)
     }
 }
 
