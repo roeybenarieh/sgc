@@ -2,15 +2,9 @@
 app for managing remote insulin injection
 currently the whole app is based on a phone that communicate to arduino board via bluetooth module.
 the arduino board is connected to a "contour plus" glucometer that can remotly inject insulin in metronic insulin pumps.
-the connection between the components is strait ford, the main issue is to calculate the insulin injection needed.
-all modification and issues are welcome :-)
+the app gets CGM values according to pydexcom project.(only works with dexcom sensors)
 
 things to do:
-1) dezine visual functionality for every aspect of the app
-2) create class for sending messaged to the arduino - Done
-3) create class for handeling dexcom api 
-4) create class for evaluating the injection sugestion
-5) connect between the visual and classes functionality - Done
+1) make the scheduled injection suggestions work in the background - even when the app is closed
+2) create better function for evaluating the injection sugestion
 
-I thought about it and its best this app will be existed as a part of https://github.com/LoopKit/Loop
-this way there will be a better UI and adding features: glucose graph prediction & insulin correction estimation
