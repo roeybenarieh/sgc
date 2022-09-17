@@ -22,6 +22,9 @@ class scheduler {
     init(){
         //listen to when a bluetooth connection has changed
         NotificationCenter.default.addObserver(self, selector: #selector(bluetoothconnected(notification:)), name: NSNotification.Name.init(rawValue: "Bluetoothchange"), object: nil)
+        
+        // get notifiction when a injection has confirmed
+        NotificationCenter.default.addObserver(self, selector: #selector(injectionConfirmation(notification:)), name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil)
     }
 
     @objc func handlerInjection(){
@@ -35,6 +38,7 @@ class scheduler {
         }
     }
     
+    //MARK: LISTENERS
     ///function that listen when a connection has changed and act accordingly
     @objc func bluetoothconnected(notification:NSNotification){
         if let info = notification.userInfo{
@@ -50,6 +54,11 @@ class scheduler {
             }
         }
     }
+    @objc func injectionConfirmation(notification:NSNotification){
+        lastinjection = Date()
+    }
+    
+    //MARK: FUNCTIONS
     func initializeTime(){
         injectionTimer = nil
         //important!!!!!!!!!! timeinterval must be more thant the time it takks the arduino to inject
