@@ -28,6 +28,10 @@ class scheduler {
         if let glucoseReading = dexcom.getLatestGlucoseReading(){
             let suggestion = getInjectionSuggestion(glucoseReading: glucoseReading)
             Bhelper.sendInjection(amount: suggestion)
+            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "doneSchedule"), object: nil, userInfo: ["text" : "last schedule: " + getstrTime()])
+        }
+        else{
+            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "doneSchedule"), object: nil, userInfo: ["text" : "api error at " + getstrTime()])
         }
     }
     
@@ -49,7 +53,7 @@ class scheduler {
     func initializeTime(){
         injectionTimer = nil
         //important!!!!!!!!!! timeinterval must be more thant the time it takks the arduino to inject
-        injectionTimer = Timer.scheduledTimer(timeInterval: 60 * 2.5, target: self, selector: #selector(self.handlerInjection), userInfo: nil, repeats: true)
+        injectionTimer = Timer.scheduledTimer(timeInterval: 60 * 0.5, target: self, selector: #selector(self.handlerInjection), userInfo: nil, repeats: true)
     }
 }
 
@@ -64,4 +68,11 @@ func getInjectionSuggestion(glucoseReading:glucoseReading) -> Int{
         return 0
     }
     return Int((Float)(glucoseLevel - targetGlucose) / insulinFuctor)
+}
+
+func getstrTime() -> String{
+    let date = Date()
+    let df = DateFormatter()
+    df.dateFormat = "HH:mm"
+    return df.string(from: date)
 }
