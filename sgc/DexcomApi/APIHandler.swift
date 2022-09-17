@@ -62,9 +62,6 @@ class Dexcom{
     func request(method: String, endpoint: String, headers: [String:String]! = [:], jsonBody: [String:Any] = [:]) -> String!{
         //URL
         let url = URL(string: "\(base_url)/\(endpoint)")
-        print("\(base_url)/\(endpoint)")
-        print(headers!)
-        print(jsonBody)
         guard url != nil else {
             print("Error creating url object")
             return nil
@@ -80,8 +77,6 @@ class Dexcom{
         //Specify the header
         //it is the fuction parameter 'headers'
         request.allHTTPHeaderFields = headers
-        print(headers!)
-        print(request.allHTTPHeaderFields!)
         
         //Specify the body (the data that is passed to dexcom api)
         //it is the function parameter 'body'
@@ -109,9 +104,7 @@ class Dexcom{
             else if !data!.isEmpty{ //Got a response from the api
                 //Parse the data
                 do{
-                    print(response!)
                     result = String(bytes: data!, encoding: .utf8)!
-                    print(result!)
                 }
                 if result == nil{
                     print("Error when creating string from the api response")
@@ -145,7 +138,6 @@ class Dexcom{
     }
     
     func validateAccountID(){
-        print("account id: " + account_id!)
         if account_id == nil{
             print(SESSION_ERROR_ACCOUNT_ID_NULL_EMPTY)
             create_session()
@@ -157,7 +149,6 @@ class Dexcom{
     }
     
     func validateSessionID(){
-        print("session id: " + session_id!)
         if session_id == nil{
             print(SESSION_ERROR_SESSION_ID_NULL)
             create_session()
@@ -226,12 +217,6 @@ class Dexcom{
         //specify the formating of the request
         request.setValue("application/json", forHTTPHeaderField: "Content-Type") //how we are incoding the body of the api request
         request.setValue("application/json", forHTTPHeaderField: "Accept") //what type incoding we want the response to contain
-        
-        //Specify the header
-        //it is the fuction parameter 'headers'
-        //request.allHTTPHeaderFields = headers
-        //print(headers)
-        //print(request.allHTTPHeaderFields!)
         
         //Specify the body (the data that is passed to dexcom api)
         //it is the function parameter 'body'
