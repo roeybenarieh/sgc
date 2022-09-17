@@ -7,6 +7,7 @@
 
 import Foundation
 
+let timeBetweenInjections = 50
 let maxGlucose: Int = 130
 let minGlucose: Int = 90
 let insulinFuctor: Float = 10.0
@@ -17,10 +18,10 @@ var lastinjection = Calendar.current.date(byAdding: .hour, value: -1, to: Date()
 func getInjectionSuggestion() -> Int{
     let glucoseLevel = dexcom.getLatestGlucoseReading().value
     let diffComponents = Calendar.current.dateComponents([.minute], from: lastinjection, to: Date())
-    if diffComponents.minute! < 60{
+    if diffComponents.minute! < timeBetweenInjections{
         return 0
     }
-    //checking for hypoglycemia
+    //checking for hypoglycemia - low suger value
     if glucoseLevel <= targetGlucose{
         return 0
     }

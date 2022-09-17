@@ -24,11 +24,11 @@ class HomeVC: UIViewController {
         
         //formating the time:
         
-        // 1. Choose a date
-        let today = Date()
+        // 1. create the current date
+        lastinjection = Date()
         // 2. Pick the date components
-        let hours   = (Calendar.current.component(.hour, from: today))
-        let minutes = (Calendar.current.component(.minute, from: today))
+        let hours   = (Calendar.current.component(.hour, from: lastinjection))
+        let minutes = (Calendar.current.component(.minute, from: lastinjection))
         // 3. Show the time
         lastInjectionTime.text = "last Injection: " + "\(hours):\(minutes)"
     }
