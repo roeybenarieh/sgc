@@ -27,11 +27,12 @@ class TabBarController: UITabBarController {
         //initializing the bluetooth helper class
         Bhelper = BluetoothHelper()
         //listen to when a bluetooth connection has changed
-        NotificationCenter.default.addObserver(self, selector: #selector(bluetoothDisconnected(notification:)), name: NSNotification.Name.init(rawValue: "Bluetoothchange"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(bluetoothconnected(notification:)), name: NSNotification.Name.init(rawValue: "Bluetoothchange"), object: nil)
         
         dexcom = Dexcom(username: "***REMOVED***", password: "***REMOVED***", outsideUSA: true)
+        injectionScheduler = scheduler() //start a repeated timer for injection handling
         if #available(iOS 13, *) {
-            scheduleBackgroundProcessing()
+            //scheduleBackgroundProcessing() not in use at the moment
         }
     }
 
@@ -39,7 +40,7 @@ class TabBarController: UITabBarController {
     //MARK: Functnions
     
     ///function that listen when a connection has changed and act accordingly
-    @objc func bluetoothDisconnected(notification:NSNotification){
+    @objc func bluetoothconnected(notification:NSNotification){
         if let info = notification.userInfo{
             let connected: String = info["connectedToBluetooth"] as! String
             if connected == "true"{
