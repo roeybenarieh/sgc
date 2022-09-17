@@ -125,6 +125,8 @@ class BluetoothHelper: BluetoothSerialDelegate{
     }
     ///sends a formated injection message
     func sendInjection(amount:Int){
-        sendMessage(message: "in" + String(amount))
+        if amount > 0 {
+            sendMessage(message: "in" + String(amount))
+        }
     }
 }

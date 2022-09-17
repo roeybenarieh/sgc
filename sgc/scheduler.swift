@@ -25,7 +25,10 @@ class scheduler {
     }
 
     @objc func handlerInjection(){
-        print(dexcom.getLatestGlucoseReading()!.value)
+        if let glucoseReading = dexcom.getLatestGlucoseReading(){
+            let suggestion = getInjectionSuggestion(glucoseReading: glucoseReading)
+            Bhelper.sendInjection(amount: suggestion)
+        }
     }
     
     ///function that listen when a connection has changed and act accordingly
@@ -45,12 +48,13 @@ class scheduler {
     }
     func initializeTime(){
         injectionTimer = nil
+        //important!!!!!!!!!! timeinterval must be more thant the time it takks the arduino to inject
         injectionTimer = Timer.scheduledTimer(timeInterval: 60 * 2.5, target: self, selector: #selector(self.handlerInjection), userInfo: nil, repeats: true)
     }
 }
 
-func getInjectionSuggestion() -> Int{
-    let glucoseLevel = dexcom.getLatestGlucoseReading().value
+func getInjectionSuggestion(glucoseReading:glucoseReading) -> Int{
+    let glucoseLevel = glucoseReading.value
     let diffComponents = Calendar.current.dateComponents([.minute], from: lastinjection, to: Date())
     if diffComponents.minute! < timeBetweenInjections{
         return 0
