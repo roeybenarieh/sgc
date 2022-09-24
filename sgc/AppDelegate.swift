@@ -47,9 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 @available(iOS 13.0, *)
 func scheduleBackgroundProcessing() {
     let request = BGProcessingTaskRequest(identifier: AppDelegate.appRefreshTaskId)
-        request.requiresNetworkConnectivity = true // Need to true if your task need to network process. Defaults to false.
 
-        request.earliestBeginDate = Date(timeIntervalSinceNow: 60) // Process after 1 minutes.
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 2) // Process after 2 seconds.
 
         do {
             try BGTaskScheduler.shared.submit(request)
