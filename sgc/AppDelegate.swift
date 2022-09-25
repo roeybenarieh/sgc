@@ -39,9 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Schedule a new refresh task.
         scheduleBackgroundProcessing()
         
-        print("[BGTASK] Perform bg peocess at: \(Date())")
-        print(dexcom.getLatestGlucoseReading()!)
-        task.setTaskCompleted(success: true)
+        /// if there is connection to a bluetooth module
+        if serial.connectedPeripheral != nil{
+            print("[BGTASK] Perform bg peocess at: \(Date())")
+            injectionHandler.handlerInjection()
+            task.setTaskCompleted(success: true)
+        }
     }
 }
 @available(iOS 13.0, *)

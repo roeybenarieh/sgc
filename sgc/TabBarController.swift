@@ -30,9 +30,9 @@ class TabBarController: UITabBarController {
         NotificationCenter.default.addObserver(self, selector: #selector(bluetoothconnected(notification:)), name: NSNotification.Name.init(rawValue: "Bluetoothchange"), object: nil)
         
         dexcom = Dexcom(username: "***REMOVED***", password: "***REMOVED***", outsideUSA: true)
-        injectionScheduler = scheduler() //start a repeated timer for injection handling
+        injectionHandler = injector()
         if #available(iOS 13, *) {
-            //scheduleBackgroundProcessing() not in use at the moment
+            scheduleBackgroundProcessing()
         }
     }
 
