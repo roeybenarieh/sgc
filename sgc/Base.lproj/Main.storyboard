@@ -3,6 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -291,28 +292,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="CRh-qs-Yrt">
-                                <rect key="frame" x="0.0" y="238.99999999999997" width="375" height="292.33333333333326"/>
+                                <rect key="frame" x="0.0" y="228.99999999999997" width="375" height="312.33333333333326"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erO-R8-QoO" userLabel="UpButton">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30.666666666666668"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="arrow.up" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="arrow.up" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="black"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="ClickUp:" destination="43o-bh-DRU" eventType="touchUpInside" id="slc-8N-0mE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgM-HM-kEm" userLabel="MiddleButton">
-                                        <rect key="frame" x="0.0" y="130.66666666666669" width="375" height="31"/>
+                                        <rect key="frame" x="0.0" y="130.66666666666669" width="375" height="51"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="OK"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="OK">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="31"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="ClickMiddle:" destination="43o-bh-DRU" eventType="touchUpInside" id="b5e-fW-Yrh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOw-83-rir" userLabel="DownButton">
-                                        <rect key="frame" x="0.0" y="261.66666666666669" width="375" height="30.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="281.66666666666669" width="375" height="30.666666666666686"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="arrow.down" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="arrow.down" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="black"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="ClickDown:" destination="43o-bh-DRU" eventType="touchUpInside" id="HhV-bm-nKG"/>
                                         </connections>
@@ -320,9 +329,9 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vuu-UN-4cB">
-                                <rect key="frame" x="113.33333333333333" y="678" width="148.33333333333337" height="31"/>
+                                <rect key="frame" x="118.33333333333333" y="678" width="138.66666666666669" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="wake up the device"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="turn device on/off"/>
                                 <connections>
                                     <action selector="ClickWakeUp:" destination="43o-bh-DRU" eventType="touchUpInside" id="ifh-bJ-0ow"/>
                                 </connections>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class SimulatorVC: UIViewController {
     
@@ -21,20 +22,24 @@ class SimulatorVC: UIViewController {
     
     @IBAction func ClickUp(_ sender: Any) {
         Bhelper.sendMessage(message:pressUp)
+        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
     }
     
     
     @IBAction func ClickMiddle(_ sender: Any) {
         Bhelper.sendMessage(message:pressMiddle)
+        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
     }
     
     
     @IBAction func ClickDown(_ sender: Any) {
         Bhelper.sendMessage(message:pressDown)
+        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
     }
     
     @IBAction func ClickWakeUp(_ sender: Any) {
         Bhelper.sendMessage(message:wakeUp)
+        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
     }
     
 }
