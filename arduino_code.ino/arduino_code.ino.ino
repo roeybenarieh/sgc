@@ -80,6 +80,7 @@ void inject(int amount){ //finish this
   push_button_ok(); delay(500); push_button_ok();
   delay(15000); //wait for the device to connect to the insulin pump 
   push_button_ok(); //come back to the main menu
+  wakeup_pin_device();
 }
 
 void push_button_up(){
