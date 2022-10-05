@@ -28,6 +28,10 @@ class TabBarController: UITabBarController {
         Bhelper = BluetoothHelper()
         //listen to when a bluetooth connection has changed
         NotificationCenter.default.addObserver(self, selector: #selector(bluetoothconnected(notification:)), name: NSNotification.Name.init(rawValue: "Bluetoothchange"), object: nil)
+        //load all of the views (run the viewdidload in all of the views)
+        for viewController in self.viewControllers!{
+            _ = viewController.view
+        }
         
         dexcom = Dexcom(username: "***REMOVED***", password: "***REMOVED***", outsideUSA: true)
         injectionHandler = injector()
