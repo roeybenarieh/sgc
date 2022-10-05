@@ -23,6 +23,9 @@ class BluetoothHelper: BluetoothSerialDelegate{
     
     var timer : Timer! = nil
     
+    //the amount of insulin sent to the arduino
+    var injectionSent :Int = 0
+    
     //MARK: initializer
     
     init(){
@@ -60,7 +63,8 @@ class BluetoothHelper: BluetoothSerialDelegate{
     ///called when a new message received, only happens when the arduino sends a confirmation of injection message
     func serialDidReceiveString(_ message: String){
         //ignore the message since its just the same confirmation string(no other messages are sent from the arduino)
-        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil, userInfo: ["injectionAmount" : injectionSent])
+        injectionSent = 0 //making sure the value wont accidentaly be used wrong
     }
     
     /// called when CBCentralManager changes (e.g. when bluetooth is turned on/off)
@@ -127,6 +131,7 @@ class BluetoothHelper: BluetoothSerialDelegate{
     func sendInjection(amount:Int){
         if amount > 0 {
             sendMessage(message: "in" + String(amount))
+            injectionSent = amount
         }
     }
 }

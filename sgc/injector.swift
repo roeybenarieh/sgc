@@ -59,9 +59,13 @@ class injector {
     }
 }
 
-func getstrTime() -> String{
-    let date = Date()
+func getstrTime(date:Date = Date()) -> String{
     let df = DateFormatter()
-    df.dateFormat = "HH:mm"
+    if Calendar.current.isDateInToday(date){
+        df.dateFormat = "HH:mm"
+    }
+    else{
+        df.dateFormat = "dd-MM-yyyy HH:mm"
+    }
     return df.string(from: date)
 }

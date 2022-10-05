@@ -29,11 +29,14 @@ class HistoryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: listeners
     @objc func injectionConfirmed(notification:NSNotification){
-        historyArr.insert((date: Date(), message: "Completed injection succesfuly"), at: 0)
-        while historyArr.count > 100 {
-            historyArr.removeLast()
+        if let info = notification.userInfo{
+            let amount = info["injectionAmount"] as! Int
+            historyArr.insert((date: Date(), message: ("Injection: \(injectionIntegetToString(amount: amount))")), at: 0)
+            while historyArr.count > 100 {
+                historyArr.removeLast()
+            }
+            history.reloadData()
         }
-        history.reloadData()
     }
     
     //MARK: tableView functions
@@ -45,7 +48,7 @@ class HistoryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let templateCell = tableView.dequeueReusableCell(withIdentifier: "injectionCell", for: indexPath)
                 //templateCell.textLabel?.textColor = UIColor.systemGreen
         let record = historyArr[indexPath.row]
-        templateCell.textLabel?.text = DateFormatter().string(from: record.date) + ":" + record.message
+        templateCell.textLabel?.text = getstrTime(date: record.date) + "- " + record.message
         
         return templateCell
     }

@@ -34,14 +34,7 @@ class InjectVC: UIViewController {
                 ///changing the Int representation of amount
                 amountInt = newAmount
                 ///changing the String representation of amount
-                var amountStr = String(amountInt)
-                if amountInt < 10{
-                    amountStr = "0." + amountStr
-                }
-                else{
-                    amountStr.insert(".", at: amountStr.index(before: amountStr.endIndex))
-                }
-                InjectionAmount.text = amountStr
+                InjectionAmount.text = injectionIntegetToString(amount:amountInt)
             }
         }
     }
@@ -136,4 +129,17 @@ class InjectVC: UIViewController {
             self.circle.removeFromSuperview()
         }
     }
+}
+func injectionIntegetToString(amount:Int!) -> String{
+    if amount == nil{
+        return "??"
+    }
+    var amountStr = String(amount)
+    if amount < 10{
+        amountStr = "0." + amountStr
+    }
+    else{
+        amountStr.insert(".", at: amountStr.index(before: amountStr.endIndex))
+    }
+    return amountStr
 }
