@@ -71,6 +71,7 @@ void loop() {
 }
 void inject(int amount){ //finish this
   wakeup_pin_device();
+  delay(15000);//asuming there is low buttery alert(whick takes screen time)
   push_button_ok(); delay(500); push_button_ok();
   delay(15000); //wait for the device to connect to the insulin pump
   for(int i = 0; i < amount; i++){
@@ -96,7 +97,6 @@ void push_button_down(){
 
 void wakeup_pin_device(){
   push_button(wakeup_pin, 7000);
-  delay(15000);//asuming there is low buttery alert(whick takes screen time)
 }
 //presstime is how much time the button is pressed in seconds!!
 void push_button(int pin, int mil_presstime){ // 1000 milsec = 1 sec
