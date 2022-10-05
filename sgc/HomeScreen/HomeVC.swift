@@ -25,9 +25,13 @@ class HomeVC: UIViewController {
     @objc func injectionConfirmed(notification:NSNotification){
         //ignore the message, it has to be confirmation beacuse that's the only message type the arduino can send
         
-        //making the ui change only in the main thread!!
-        DispatchQueue.main.async { [weak self] in
-            self?.lastInjectionTime.text = "last Injection: " + getstrTime()
+        if let info = notification.userInfo{
+            let amount = info["injectionAmount"] as! Int
+            
+            //making the ui change only in the main thread!!
+            DispatchQueue.main.async { [weak self] in
+                self?.lastInjectionTime.text = "last Injection: " + getstrTime() + " - " + injectionIntegetToString(amount: amount)
+            }
         }
     }
     
