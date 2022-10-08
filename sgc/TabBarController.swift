@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
     //MARK: IBInspectable
     
     ///the first view that will be displayed
-    @IBInspectable var initialIndex: Int = 0
+    @IBInspectable let initialIndex: Int = 0
     
     
     //MARK: UITabBarController
@@ -28,9 +28,13 @@ class TabBarController: UITabBarController {
         Bhelper = BluetoothHelper()
         //listen to when a bluetooth connection has changed
         NotificationCenter.default.addObserver(self, selector: #selector(bluetoothconnected(notification:)), name: NSNotification.Name.init(rawValue: "Bluetoothchange"), object: nil)
-        //load all of the views (run the viewdidload in all of the views)
+
+        //goes threw all of the views in the tabbar
         for viewController in self.viewControllers!{
-            _ = viewController.view
+            // if obj is the history controller, loading it(runing the viewdidload of this view)
+            if let _ = viewController as? HistoryVC {
+                _ = viewController.view
+            }
         }
         
         dexcom = Dexcom(username: "***REMOVED***", password: "***REMOVED***", outsideUSA: true)

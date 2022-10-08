@@ -108,7 +108,7 @@ class InjectVC: UIViewController {
         changeStatus(status: "injected " + InjectionAmount.text! + " succesfuly!")
         
         //return to the beggining
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { //wait 3 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { //wait 5 seconds
             self.Status.textColor = UIColor.systemBlue
             self.changeStatus(status: "waiting for command")
             self.busy = false

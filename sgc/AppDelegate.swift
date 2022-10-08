@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         /// if there is connection to a bluetooth module
         if serial.connectedPeripheral != nil{
-            print("[BGTASK] Perform bg peocess at: \(Date())")
+            print("[BGTASK] Perform bg process at: \(Date())")
             injectionHandler.handlerInjection()
             task.setTaskCompleted(success: true)
         }
@@ -50,13 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 @available(iOS 13.0, *)
 func scheduleBackgroundProcessing() {
     let request = BGProcessingTaskRequest(identifier: AppDelegate.appRefreshTaskId)
-
-        request.earliestBeginDate = Date(timeIntervalSinceNow: 2) // Process after 2 seconds.
-
-        do {
-            try BGTaskScheduler.shared.submit(request)
-        } catch {
-            print("Could not schedule the processing task: (error)")
-        }
+    request.requiresExternalPower = false
+    request.earliestBeginDate = Date(timeIntervalSinceNow: 2) // Process after 2 seconds.
+    
+    do{
+        try BGTaskScheduler.shared.submit(request)
     }
+    catch {
+        print("Could not schedule the processing task: (error)")
+        sleep(5) //wait 5 seconds, than try schedule again
+        scheduleBackgroundProcessing()
+    }
+}
 
