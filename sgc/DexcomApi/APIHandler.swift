@@ -195,6 +195,8 @@ class Dexcom{
         }
     }
     
+    //this function can get at most 288 glucose reading in one api call
+    //runtime with OK internet connection ≈ 1s (very little more)
     ///get max_count glucsose readings within specified minutes.
     func getGlucoseReadings(minutes: Int = 1440, maxCount: Int = 288) ->[glucoseReading]!{
         validateSessionID()
@@ -276,6 +278,8 @@ class Dexcom{
         }
         return glucoseReadings
     }
+    
+    //runtime with OK internet connection ≈ 1s (very little more)
     func getLatestGlucoseReading() -> glucoseReading!{
         let glucoseReadings = getGlucoseReadings(maxCount: 1)
         if glucoseReadings == nil{
