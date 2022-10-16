@@ -60,11 +60,19 @@ class BluetoothHelper: BluetoothSerialDelegate{
         }
     }
     
-    ///called when a new message received, only happens when the arduino sends a confirmation of injection message
+    ///called when a new message received - translate the recieved message to string
     func serialDidReceiveString(_ message: String){
-        //ignore the message since its just the same confirmation string(no other messages are sent from the arduino)
-        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil, userInfo: ["injectionAmount" : injectionSent])
-        injectionSent = 0 //making sure the value wont accidentaly be used wrong
+        if message == "c" { // confirmation of injection message
+            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil, userInfo: ["injectionAmount" : injectionSent])
+            injectionSent = 0 //making sure the value wont accidentaly be used wrong
+        }
+    }
+    ///called when a new message received - gets the recieved message as bytes
+    func serialDidReceiveBytes(_ bytes: [UInt8]){
+        if bytes == [11]{ // arduino message for reminding to make an action every 5 minutes
+            print("[BTDelegate] Perform background process at: \(Date())")
+            injectionHandler.handlerInjection()
+        }
     }
     
     /// called when CBCentralManager changes (e.g. when bluetooth is turned on/off)
