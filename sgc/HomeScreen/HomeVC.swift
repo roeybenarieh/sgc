@@ -7,7 +7,7 @@
 
 import UIKit
 
-var MinutesToScheduleWarning = 1 //this var represent when the app tell the user a long time has passed from last schedule
+var MinutesToScheduleWarning = 20 //this var represent when the app tell the user a long time has passed from last schedule
 class HomeVC: UIViewController {
     
     //MARK: IBOoutlets
