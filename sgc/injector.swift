@@ -25,7 +25,7 @@ class injector {
 
     func handlerInjection(){
         //telling the home screen that the scedule is now happening
-        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "doneSchedule"), object: nil, userInfo: ["text" : "last schedule: " + getstrTime()])
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "doneSchedule"), object: nil, userInfo: ["text" : "last schedule: "])
         let suggestion = getInjectionSuggestion()
         Bhelper.sendInjection(amount: suggestion)
     }
@@ -53,7 +53,7 @@ class injector {
             return Int((Float)(glucoseLevel - targetGlucose) / insulinFuctor)
         }
         else{
-            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "doneSchedule"), object: nil, userInfo: ["text" : "api error at " + getstrTime()])
+            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "doneSchedule"), object: nil, userInfo: ["text" : "api error at "])
             return 0
         }
     }
