@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         /// if there is connection to a bluetooth module
         if serial.connectedPeripheral != nil{
-            print("[BGTASK] Perform bg process at: \(Date())")
+            print("[BGTASK] Performed at: \(Date())")
             injectionHandler.handlerInjection()
             task.setTaskCompleted(success: true)
         }

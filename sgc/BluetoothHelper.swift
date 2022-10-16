@@ -70,7 +70,7 @@ class BluetoothHelper: BluetoothSerialDelegate{
     ///called when a new message received - gets the recieved message as bytes
     func serialDidReceiveBytes(_ bytes: [UInt8]){
         if bytes == [11]{ // arduino message for reminding to make an action every 5 minutes
-            print("[BTDelegate] Perform background process at: \(Date())")
+            print("[BTDelegate] Performed at: \(Date())")
             injectionHandler.handlerInjection()
         }
     }
