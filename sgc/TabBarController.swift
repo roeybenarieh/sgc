@@ -39,9 +39,6 @@ class TabBarController: UITabBarController {
         
         dexcom = Dexcom(username: "***REMOVED***", password: "***REMOVED***", outsideUSA: true)
         injectionHandler = injector()
-        if #available(iOS 13, *) {
-            scheduleBackgroundProcessing()
-        }
     }
 
     

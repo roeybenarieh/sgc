@@ -14,11 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let appRefreshTaskId = "com.roeyswift.sgc.refreshdexcomapi"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if #available(iOS 13, *) {
-            BGTaskScheduler.shared.register(forTaskWithIdentifier: AppDelegate.appRefreshTaskId, using: nil) { task in
-                    self.handleAppRefresh(task: task as! BGProcessingTask)
-            }
-        }
+        
         return true
     }
 
@@ -38,33 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
-    }
-    
-    func handleAppRefresh(task: BGProcessingTask) {
-        // Schedule a new refresh task.
-        scheduleBackgroundProcessing()
-        
-        /// if there is connection to a bluetooth module
-        if serial.connectedPeripheral != nil{
-            print("[BGTASK] Performed at: \(Date())")
-            injectionHandler.handlerInjection()
-            task.setTaskCompleted(success: true)
-        }
-    }
-}
-@available(iOS 13.0, *)
-func scheduleBackgroundProcessing() {
-    let request = BGProcessingTaskRequest(identifier: AppDelegate.appRefreshTaskId)
-    request.requiresExternalPower = false
-    request.earliestBeginDate = Date(timeIntervalSinceNow: 2) // Process after 2 seconds.
-    
-    do{
-        try BGTaskScheduler.shared.submit(request)
-    }
-    catch {
-        print("Could not schedule the processing task: (error)")
-        sleep(5) //wait 5 seconds, than try schedule again
-        scheduleBackgroundProcessing()
     }
 }
 
