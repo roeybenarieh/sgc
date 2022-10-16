@@ -34,7 +34,7 @@ void setup() {
   Serial.begin(9600);                     //initialise serial COM at 9600 baudrate
   Serial.println("HM10 serial started at 9600");
   Serial.println("you can disconnect the usb cable from the Arduino and you are all set up :-)");
-  //Serial.end();
+  Serial.end();
 
   //initialise the serial for the Bluetooth module
   HM10.begin(9600); // Sets HM10 the speed (baud rate) for the serial communication 
