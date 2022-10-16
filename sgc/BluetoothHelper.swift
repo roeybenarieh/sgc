@@ -60,18 +60,15 @@ class BluetoothHelper: BluetoothSerialDelegate{
         }
     }
     
-    ///called when a new message received - translate the recieved message to string
-    func serialDidReceiveString(_ message: String){
-        if message == "c" { // confirmation of injection message
-            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil, userInfo: ["injectionAmount" : injectionSent])
-            injectionSent = 0 //making sure the value wont accidentaly be used wrong
-        }
-    }
     ///called when a new message received - gets the recieved message as bytes
     func serialDidReceiveBytes(_ bytes: [UInt8]){
         if bytes == [11]{ // arduino message for reminding to make an action every 5 minutes
             print("[BTDelegate] Performed at: \(Date())")
             injectionHandler.handlerInjection()
+        }
+        if bytes == [101] { // confirmation of injection message
+            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil, userInfo: ["injectionAmount" : injectionSent])
+            injectionSent = 0 //making sure the value wont accidentaly be used wrong
         }
     }
     
