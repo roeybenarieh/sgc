@@ -1,3 +1,4 @@
+#include <MsTimer2.h> // this library needs to be installed from the arduino library manager in the IDE
 #include <SoftwareSerial.h>
 //Dock: https://docs.arduino.cc/learn/built-in-libraries/software-serial#write
 
@@ -38,6 +39,13 @@ void setup() {
   HM10.begin(9600); // Sets HM10 the speed (baud rate) for the serial communication 
   HM10.setTimeout(2000); // 2 seconds until serial stop looking for the continuation of the data
   HM10.listen();  // listen the HM10 port
+
+  //every 5 minutes send bluetooth message for the iphone so he could wake up and run its own code
+  MsTimer2::set(5 * 60000, remind_phone_to_work); // 5s period, send one bit
+  MsTimer2::start();
+}
+void remind_phone_to_work(){
+  HM10.write(11); // send two bits with 1's in both of them
 }
 
 void loop() {
