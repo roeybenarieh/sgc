@@ -66,7 +66,7 @@ class BluetoothHelper: BluetoothSerialDelegate{
             print("[BTDelegate] Performed at: \(Date())")
             injectionHandler.handlerInjection()
         }
-        if bytes == [101] { // confirmation of injection message
+        else if bytes == [101] { // confirmation of injection message
             NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil, userInfo: ["injectionAmount" : injectionSent])
             injectionSent = 0 //making sure the value wont accidentaly be used wrong
         }
