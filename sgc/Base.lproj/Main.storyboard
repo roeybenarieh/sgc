@@ -37,49 +37,10 @@
                     <view key="view" contentMode="scaleToFill" id="MjD-mz-KMu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GeZ-Rm-rST">
-                                <rect key="frame" x="0.0" y="669" width="375" height="60"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Connect to Dexcom account"/>
-                                <connections>
-                                    <action selector="openDexcomAuthenticationPage" destination="B5e-iH-mfG" eventType="touchUpInside" id="a1S-yv-kVX"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lCo-fl-oei">
-                                <rect key="frame" x="0.0" y="44" width="375" height="625"/>
-                                <subviews>
-                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKW-8h-kad">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="625"/>
-                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <wkWebViewConfiguration key="configuration">
-                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                            <wkPreferences key="preferences"/>
-                                        </wkWebViewConfiguration>
-                                    </wkWebView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Mq9-4N-OV1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Mq9-4N-OV1" firstAttribute="bottom" secondItem="GeZ-Rm-rST" secondAttribute="bottom" id="3OF-GU-60r"/>
-                            <constraint firstItem="lCo-fl-oei" firstAttribute="trailing" secondItem="Mq9-4N-OV1" secondAttribute="trailing" id="AxM-DT-DIV"/>
-                            <constraint firstItem="lCo-fl-oei" firstAttribute="top" secondItem="Mq9-4N-OV1" secondAttribute="top" id="JgC-Rt-1gt"/>
-                            <constraint firstItem="GeZ-Rm-rST" firstAttribute="trailing" secondItem="Mq9-4N-OV1" secondAttribute="trailing" id="QyP-Ia-ENL"/>
-                            <constraint firstItem="Mq9-4N-OV1" firstAttribute="bottom" secondItem="lCo-fl-oei" secondAttribute="bottom" constant="60" id="Sug-oz-x8R"/>
-                            <constraint firstItem="GeZ-Rm-rST" firstAttribute="top" secondItem="lCo-fl-oei" secondAttribute="bottom" id="eyR-Bd-d1K"/>
-                            <constraint firstItem="lCo-fl-oei" firstAttribute="leading" secondItem="Mq9-4N-OV1" secondAttribute="leading" id="ffu-cq-dex"/>
-                            <constraint firstItem="GeZ-Rm-rST" firstAttribute="leading" secondItem="Mq9-4N-OV1" secondAttribute="leading" id="yDL-te-fxG"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="0nc-qy-4j8"/>
-                    <connections>
-                        <outlet property="dexcomButton" destination="GeZ-Rm-rST" id="hyK-4t-2I7"/>
-                        <outlet property="webview" destination="BKW-8h-kad" id="MFJ-72-W4H"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFu-6h-IS7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -388,9 +349,6 @@
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="scale.3d" catalog="system" width="128" height="112"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
