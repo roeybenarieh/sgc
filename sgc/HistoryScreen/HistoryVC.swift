@@ -40,7 +40,11 @@ class HistoryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             while historyArr.count > 2*(1400/timeBetweenInjections) { //calculate two days worth of constantly injecting when possible
                 historyArr.removeLast()
             }
-            //the UI representation of historyArr will change when viewWillAppear()
+            //the UI representation of historyArr will change when viewWillAppear(), or when in foreground
+            if UIApplication.shared.applicationState == .active {
+                // this code runs in foreground
+                history.reloadData()
+            }
         }
     }
     
