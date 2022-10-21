@@ -27,15 +27,20 @@ class HistoryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(injectionConfirmed(notification:)), name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) // No need for semicolon
+        history.reloadData()
+    }
+    
     //MARK: listeners
     @objc func injectionConfirmed(notification:NSNotification){
         if let info = notification.userInfo{
             let amount = info["injectionAmount"] as! Int
             historyArr.insert((date: Date(), message: ("Injection: \(injectionIntegetToString(amount: amount))")), at: 0)
-            while historyArr.count > 100 {
+            while historyArr.count > 2*(1400/timeBetweenInjections) { //calculate two days worth of constantly injecting when possible
                 historyArr.removeLast()
             }
-            history.reloadData()
+            //the UI representation of historyArr will change when viewWillAppear()
         }
     }
     
