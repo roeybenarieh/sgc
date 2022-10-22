@@ -46,6 +46,7 @@ class InjectVC: UIViewController {
         circle = UIImageView(frame: CGRect(x: view.center.x, y: view.center.y, width: 1, height: 1))
         circle.backgroundColor = UIColor.systemMint
         circle.layer.cornerRadius = circle.frame.size.width/2
+        view.insertSubview(circle, belowSubview: Status)
         // get notifiction when a injection has confirmed
         NotificationCenter.default.addObserver(self, selector: #selector(injectionConfirmed(notification:)), name: NSNotification.Name.init(rawValue: "InjectionConfirmation"), object: nil)
     }
@@ -101,32 +102,38 @@ class InjectVC: UIViewController {
     
     // injection message got confirmed
     @objc func injectionConfirmed(notification:NSNotification){
-        //ignore the message, it has to be confirmation beacuse that's the only message type the arduino can send
-        succesfulInjectionIndicator()
-        //change the status
-        self.Status.textColor = UIColor.systemRed
-        changeStatus(status: "injected " + InjectionAmount.text! + " succesfuly!")
-        
-        //return to the beggining
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { //wait 5 seconds
-            self.Status.textColor = UIColor.systemBlue
-            self.changeStatus(status: "waiting for command")
-            self.busy = false
+        if UIApplication.shared.applicationState == .active {
+            succesfulInjectionIndicator(animate: true)
+            sleep(1) //wait 5 seconds
         }
+        else{
+            succesfulInjectionIndicator(animate: false)
+        }
+        //return to the beggining state
+        self.changeStatus(status: "waiting for command")
+        self.busy = false
     }
     //indicate the user he touched the injec button
     func sentInjectionIndicator(){
-        view.insertSubview(circle, belowSubview: Status)
         UIView.animate(withDuration: 5, delay: 0, options: [], animations: {
             let maxstretch = max(self.view.frame.size.height, self.view.frame.size.width) * 6
             self.circle.transform = CGAffineTransform(scaleX: maxstretch, y: maxstretch)
         })
     }
-    func succesfulInjectionIndicator(){
-        UIView.animate(withDuration: 5, delay: 0, options: [], animations: {
-            self.circle.transform = CGAffineTransform.identity
-        }) { finished in
-            self.circle.removeFromSuperview()
+    func succesfulInjectionIndicator(animate:Bool = true){
+        //if the injection was a part of automation the circle would never become large, and as a result the if statement below wont let it change the circle
+        if self.circle.transform != CGAffineTransform.identity{ //check if need to change the circle
+            //if the user made the injection manualy there are two posibilites:
+            //1: he is still on the app and the indicator will be animated
+            //2: he closed the app and the indicator wont be animated(but the circle still going to change to small)
+            if animate{
+                UIView.animate(withDuration: 5, delay: 0, options: [], animations: {
+                    self.circle.transform = CGAffineTransform.identity
+                })
+            }
+            else{
+                self.circle.transform = CGAffineTransform.identity
+            }
         }
     }
 }
