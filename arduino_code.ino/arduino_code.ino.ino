@@ -78,20 +78,22 @@ void loop() {
     HM10.flush();
   }
 }
-void inject(int amount){ //finish this
-  wakeup_pin_device();
-  delay(15000);//assuming there is low buttery alert(which takes screen time)
-  push_button_ok(); delay(500); push_button_ok();
-  delay(15000); //wait for the device to connect to the insulin pump
-  for(int i = 0; i < amount; i++){
-    push_button_up();
+void inject(int amount){
+  if (amount <= 50){
+    wakeup_pin_device();
+    delay(15000);//assuming there is low buttery alert(which takes screen time)
+    push_button_ok(); delay(500); push_button_ok();
+    delay(15000); //wait for the device to connect to the insulin pump
+    for(int i = 0; i < amount; i++){
+      push_button_up();
+      delay(500);
+    }
+    push_button_ok(); delay(500); push_button_ok();
+    delay(15000); //wait for the device to connect to the insulin pump 
+    push_button_ok(); //come back to the main menu
     delay(500);
+    wakeup_pin_device();
   }
-  push_button_ok(); delay(500); push_button_ok();
-  delay(15000); //wait for the device to connect to the insulin pump 
-  push_button_ok(); //come back to the main menu
-  delay(500);
-  wakeup_pin_device();
 }
 
 void push_button_up(){
