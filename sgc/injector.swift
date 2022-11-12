@@ -44,13 +44,19 @@ class injector {
         }
         if let glucoseReading = dexcom.getLatestGlucoseReading(){
             let glucoseLevel = glucoseReading.value
+            var tmpInsulinFuctor:Float = insulinFuctor
             
             //checking for hypoglycemia - low suger value
             if glucoseLevel <= targetGlucose{
                 return 0
             }
-            //calculating the suggestion
-            return Int((Float)(glucoseLevel - targetGlucose) / insulinFuctor)
+            
+            //if somethign needed to be done:
+            if glucoseLevel >= 180{
+                tmpInsulinFuctor = 7.0
+            }
+            //calculating the suggestion //targetGlucose = 110 //insulinFuctor = 10
+            return Int((Float)(glucoseLevel - targetGlucose) / tmpInsulinFuctor)
         }
         else{
             NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "doneSchedule"), object: nil, userInfo: ["text" : "api error at "])
