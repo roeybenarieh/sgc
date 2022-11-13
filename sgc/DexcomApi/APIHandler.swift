@@ -281,7 +281,7 @@ class Dexcom{
     
     //runtime with OK internet connection ≈ 1s (very little more)
     func getLatestGlucoseReading() -> glucoseReading!{
-        let glucoseReadings = getGlucoseReadings(maxCount: 1)
+        let glucoseReadings = getGlucoseReadings(minutes: 5, maxCount: 1)
         if glucoseReadings == nil{
             return nil
         }
