@@ -15,6 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        if #available(iOS 13, *) {
+            BGTaskScheduler.shared.register(forTaskWithIdentifier: AppDelegate.appRefreshTaskId, using: nil) { task in
+                self.handleAppRefresh(task: task as! BGAppRefreshTask)
+            }
+        }
+        scheduleBackgroundTask()
         return true
     }
 
@@ -35,5 +41,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
     }
+    func handleAppRefresh(task: BGAppRefreshTask) {
+        // Schedule a new refresh task.
+        scheduleBackgroundTask()
+        
+        // Provide the background task with an expiration handler that cancels the operation.
+        task.expirationHandler = {
+           return
+        }
+        
+        /// if there is connection to a bluetooth module
+        if serial.connectedPeripheral != nil{
+            print("[BGTASK] Perform bg fetch at: \(Date())")
+            injectionHandler.handlerInjection()
+            task.setTaskCompleted(success: true)
+        }
+    }
 }
 
+@available(iOS 13.0, *)
+func scheduleBackgroundTask() {
+    let request = BGAppRefreshTaskRequest(identifier: AppDelegate.appRefreshTaskId)
+    
+    // Fetch no earlier than 5 minutes from now.
+    request.earliestBeginDate = Date(timeIntervalSinceNow: 60 * 5)
+    do {
+        try BGTaskScheduler.shared.submit(request)
+    } catch {
+        print("Could not schedule the processing task: (error)")
+    }
+}
