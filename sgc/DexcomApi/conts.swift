@@ -7,6 +7,11 @@
 
 import Foundation
 
+// change these parameters for your needs
+var DexcomApi_username: String = ""
+var DexcomApi_password: String = ""
+var DexcomApi_outsideUSA: Bool = true
+
 // Dexcom Share API base urls
 let DEXCOM_BASE_URL = "https://share2.dexcom.com/ShareWebServices/Services"
 let DEXCOM_BASE_URL_OUS = "https://shareous1.dexcom.com/ShareWebServices/Services"

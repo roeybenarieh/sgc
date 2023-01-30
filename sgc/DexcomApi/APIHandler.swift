@@ -49,10 +49,10 @@ class Dexcom{
     var account_id: String!
     
     
-    init(username: String, password: String, outsideUSA: Bool){
-        self.password = password
-        self.username = username
-        self.base_url = outsideUSA ? DEXCOM_BASE_URL_OUS : DEXCOM_BASE_URL
+    init(){
+        self.password = DexcomApi_password
+        self.username = DexcomApi_username
+        self.base_url = DexcomApi_outsideUSA ? DEXCOM_BASE_URL_OUS : DEXCOM_BASE_URL
         session_id = nil
         account_id = nil
         create_session()

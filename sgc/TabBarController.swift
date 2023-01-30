@@ -37,7 +37,7 @@ class TabBarController: UITabBarController {
             }
         }
         
-        dexcom = Dexcom(username: "***REMOVED***", password: "***REMOVED***", outsideUSA: true)
+        dexcom = Dexcom()
         injectionHandler = injector()
     }
 
