@@ -173,3 +173,7 @@ examples/ios/objc/Draw/Constants.h
 Package.resolved
 
 examples/installation/ios/swift/SwiftPackageManagerExample/SwiftPackageManagerExample.xcodeproj
+
+# special for this project:
+# making sure the default DB exists
+!default.realm

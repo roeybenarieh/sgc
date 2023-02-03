@@ -23,6 +23,8 @@
 		1440932828A3918B008CEFFD /* BluetoothHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1440932728A3918B008CEFFD /* BluetoothHelper.swift */; };
 		14446AE828CB70D7001F8CCC /* conts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14446AE728CB70D7001F8CCC /* conts.swift */; };
 		14446AEA28CD32E8001F8CCC /* injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14446AE928CD32E8001F8CCC /* injector.swift */; };
+		144F2A36298D562800A8AC08 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 144F2A35298D562800A8AC08 /* default.realm */; };
+		144F2A38298D56AC00A8AC08 /* RealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144F2A37298D56AC00A8AC08 /* RealmDB.swift */; };
 		1474AC1A28C11C290006A71C /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474AC1928C11C290006A71C /* APIHandler.swift */; };
 		C9A0398AA10DF0A95458A2EE /* Pods_sgc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461AEEDFA4EB55A0AB5ED240 /* Pods_sgc.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,8 @@
 		1440932728A3918B008CEFFD /* BluetoothHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothHelper.swift; sourceTree = "<group>"; };
 		14446AE728CB70D7001F8CCC /* conts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = conts.swift; sourceTree = "<group>"; };
 		14446AE928CD32E8001F8CCC /* injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = injector.swift; sourceTree = "<group>"; };
+		144F2A35298D562800A8AC08 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
+		144F2A37298D56AC00A8AC08 /* RealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
 		1474AC1928C11C290006A71C /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		461AEEDFA4EB55A0AB5ED240 /* Pods_sgc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sgc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A9AD3D0E4AF2EEC773EC4E /* Pods-sgc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sgc.debug.xcconfig"; path = "Target Support Files/Pods-sgc/Pods-sgc.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 				14446AE928CD32E8001F8CCC /* injector.swift */,
 				144F2A20298C201B00A8AC08 /* BluetoothHandler */,
 				1474AC1828C11C100006A71C /* DexcomApi */,
+				144F2A34298D561800A8AC08 /* DB */,
 				142712B8289FAA3000478A6F /* Main.storyboard */,
 				142712BB289FAA3100478A6F /* Assets.xcassets */,
 				142712BD289FAA3100478A6F /* LaunchScreen.storyboard */,
@@ -152,6 +157,15 @@
 				142712C6289FAAC300478A6F /* BluetoothSerial.swift */,
 			);
 			path = BluetoothHandler;
+			sourceTree = "<group>";
+		};
+		144F2A34298D561800A8AC08 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				144F2A35298D562800A8AC08 /* default.realm */,
+				144F2A37298D56AC00A8AC08 /* RealmDB.swift */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 		1474AC1828C11C100006A71C /* DexcomApi */ = {
@@ -241,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144F2A36298D562800A8AC08 /* default.realm in Resources */,
 				142712BF289FAA3100478A6F /* LaunchScreen.storyboard in Resources */,
 				142712BC289FAA3100478A6F /* Assets.xcassets in Resources */,
 				142712BA289FAA3000478A6F /* Main.storyboard in Resources */,
@@ -300,6 +315,7 @@
 				142712D7289FF68700478A6F /* TabBarController.swift in Sources */,
 				142712B7289FAA3000478A6F /* HomeVC.swift in Sources */,
 				1440932828A3918B008CEFFD /* BluetoothHelper.swift in Sources */,
+				144F2A38298D56AC00A8AC08 /* RealmDB.swift in Sources */,
 				142712B3289FAA3000478A6F /* AppDelegate.swift in Sources */,
 				142712C7289FAAC300478A6F /* BluetoothSerial.swift in Sources */,
 				14446AEA28CD32E8001F8CCC /* injector.swift in Sources */,
