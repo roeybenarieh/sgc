@@ -13,17 +13,17 @@
 		142712BA289FAA3000478A6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 142712B8289FAA3000478A6F /* Main.storyboard */; };
 		142712BC289FAA3100478A6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 142712BB289FAA3100478A6F /* Assets.xcassets */; };
 		142712BF289FAA3100478A6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 142712BD289FAA3100478A6F /* LaunchScreen.storyboard */; };
-		142712C7289FAAC300478A6F /* BluetoothSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142712C6289FAAC300478A6F /* BluetoothSerial.swift */; };
 		142712CA289FC2F600478A6F /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142712C9289FC2F600478A6F /* HistoryVC.swift */; };
 		142712CC289FC45000478A6F /* InjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142712CB289FC45000478A6F /* InjectVC.swift */; };
 		142712CE289FC48A00478A6F /* SimulatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142712CD289FC48A00478A6F /* SimulatorVC.swift */; };
 		142712D7289FF68700478A6F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142712D6289FF68700478A6F /* TabBarController.swift */; };
 		142712DB28A100D700478A6F /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142712DA28A100D700478A6F /* SettingsVC.swift */; };
 		142EE6C828C37D7200CDD32B /* api responses formaing.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 142EE6C728C37D7200CDD32B /* api responses formaing.rtf */; };
-		1440932828A3918B008CEFFD /* BluetoothHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1440932728A3918B008CEFFD /* BluetoothHelper.swift */; };
 		14446AE828CB70D7001F8CCC /* conts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14446AE728CB70D7001F8CCC /* conts.swift */; };
 		14446AEA28CD32E8001F8CCC /* injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14446AE928CD32E8001F8CCC /* injector.swift */; };
 		1474AC1A28C11C290006A71C /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474AC1928C11C290006A71C /* APIHandler.swift */; };
+		14FD217E299931BF009EFBD0 /* BluetoothHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FD217C299931BF009EFBD0 /* BluetoothHelper.swift */; };
+		14FD217F299931BF009EFBD0 /* BluetoothSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FD217D299931BF009EFBD0 /* BluetoothSerial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,17 +35,17 @@
 		142712BB289FAA3100478A6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		142712BE289FAA3100478A6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		142712C0289FAA3100478A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		142712C6289FAAC300478A6F /* BluetoothSerial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothSerial.swift; sourceTree = "<group>"; };
 		142712C9289FC2F600478A6F /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		142712CB289FC45000478A6F /* InjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectVC.swift; sourceTree = "<group>"; };
 		142712CD289FC48A00478A6F /* SimulatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorVC.swift; sourceTree = "<group>"; };
 		142712D6289FF68700478A6F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		142712DA28A100D700478A6F /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		142EE6C728C37D7200CDD32B /* api responses formaing.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "api responses formaing.rtf"; sourceTree = "<group>"; };
-		1440932728A3918B008CEFFD /* BluetoothHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothHelper.swift; sourceTree = "<group>"; };
 		14446AE728CB70D7001F8CCC /* conts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = conts.swift; sourceTree = "<group>"; };
 		14446AE928CD32E8001F8CCC /* injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = injector.swift; sourceTree = "<group>"; };
 		1474AC1928C11C290006A71C /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		14FD217C299931BF009EFBD0 /* BluetoothHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothHelper.swift; sourceTree = "<group>"; };
+		14FD217D299931BF009EFBD0 /* BluetoothSerial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothSerial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +86,9 @@
 				142712D3289FF32A00478A6F /* HistoryScreen */,
 				142712D4289FF33C00478A6F /* SimulatorScreen */,
 				142712D5289FF34300478A6F /* SettingsScreen */,
-				142712C6289FAAC300478A6F /* BluetoothSerial.swift */,
-				1440932728A3918B008CEFFD /* BluetoothHelper.swift */,
 				1474AC1828C11C100006A71C /* DexcomApi */,
 				14446AE928CD32E8001F8CCC /* injector.swift */,
+				14FD2180299933F4009EFBD0 /* BluetoothHandler */,
 				142712B8289FAA3000478A6F /* Main.storyboard */,
 				142712BB289FAA3100478A6F /* Assets.xcassets */,
 				142712BD289FAA3100478A6F /* LaunchScreen.storyboard */,
@@ -147,6 +146,15 @@
 				14446AE728CB70D7001F8CCC /* conts.swift */,
 			);
 			path = DexcomApi;
+			sourceTree = "<group>";
+		};
+		14FD2180299933F4009EFBD0 /* BluetoothHandler */ = {
+			isa = PBXGroup;
+			children = (
+				14FD217D299931BF009EFBD0 /* BluetoothSerial.swift */,
+				14FD217C299931BF009EFBD0 /* BluetoothHelper.swift */,
+			);
+			path = BluetoothHandler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,11 +229,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14FD217E299931BF009EFBD0 /* BluetoothHelper.swift in Sources */,
+				14FD217F299931BF009EFBD0 /* BluetoothSerial.swift in Sources */,
 				142712D7289FF68700478A6F /* TabBarController.swift in Sources */,
 				142712B7289FAA3000478A6F /* HomeVC.swift in Sources */,
-				1440932828A3918B008CEFFD /* BluetoothHelper.swift in Sources */,
 				142712B3289FAA3000478A6F /* AppDelegate.swift in Sources */,
-				142712C7289FAAC300478A6F /* BluetoothSerial.swift in Sources */,
 				14446AEA28CD32E8001F8CCC /* injector.swift in Sources */,
 				142712CA289FC2F600478A6F /* HistoryVC.swift in Sources */,
 				142712B5289FAA3000478A6F /* SceneDelegate.swift in Sources */,
