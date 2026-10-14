@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Helvetica, Arial, sans-serif">
+  <title>SGC architecture and data flow diagram (illustrative, not a photo of real hardware)</title>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="720" fill="#ffffff"/>
+  <text x="600" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">
+    SGC — architecture &amp; data flow (diagram, not a real screenshot)
+  </text>
+
+  <!-- arrow marker defs -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#b23"/>
+    </marker>
+  </defs>
+
+  <!-- Box style helper via repeated rects -->
+
+  <!-- 1. Dexcom sensor -->
+  <rect x="20" y="120" width="170" height="90" rx="10" fill="#eaf2ff" stroke="#3b6fb6" stroke-width="2"/>
+  <text x="105" y="155" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3a5f">Dexcom CGM</text>
+  <text x="105" y="175" text-anchor="middle" font-size="12" fill="#1d3a5f">sensor + transmitter</text>
+  <text x="105" y="193" text-anchor="middle" font-size="11" fill="#1d3a5f">(worn by the user)</text>
+
+  <!-- 2. Dexcom Share cloud -->
+  <rect x="250" y="120" width="190" height="90" rx="10" fill="#eaf2ff" stroke="#3b6fb6" stroke-width="2"/>
+  <text x="345" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d3a5f">Dexcom Share API</text>
+  <text x="345" y="170" text-anchor="middle" font-size="12" fill="#1d3a5f">(cloud, HTTPS JSON)</text>
+  <text x="345" y="188" text-anchor="middle" font-size="11" fill="#1d3a5f">share2 / shareous1 endpoints</text>
+
+  <!-- arrow 1->2 -->
+  <line x1="190" y1="165" x2="248" y2="165" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="219" y="155" text-anchor="middle" font-size="10" fill="#333">wireless</text>
+
+  <!-- 3. iOS app -->
+  <rect x="500" y="90" width="230" height="150" rx="10" fill="#fff3e0" stroke="#c77d17" stroke-width="2"/>
+  <text x="615" y="118" text-anchor="middle" font-size="15" font-weight="bold" fill="#5c3d08">iOS app (sgc)</text>
+  <text x="615" y="138" text-anchor="middle" font-size="11" fill="#5c3d08">Dexcom polling (APIHandler)</text>
+  <text x="615" y="155" text-anchor="middle" font-size="11" fill="#5c3d08">dose suggestion (injector.swift)</text>
+  <text x="615" y="172" text-anchor="middle" font-size="10" fill="#5c3d08">Home / Inject / History / Sim.</text>
+  <text x="615" y="189" text-anchor="middle" font-size="11" fill="#5c3d08">BluetoothHelper (CoreBluetooth)</text>
+  <text x="615" y="206" text-anchor="middle" font-size="11" fill="#5c3d08">manual tap OR automatic suggestion</text>
+
+  <!-- arrow 2->3 -->
+  <line x1="440" y1="165" x2="498" y2="165" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="469" y="155" text-anchor="middle" font-size="10" fill="#333">HTTPS</text>
+
+  <!-- 4. HM-10 BLE module -->
+  <rect x="800" y="90" width="170" height="90" rx="10" fill="#e8f7ec" stroke="#2f8f4e" stroke-width="2"/>
+  <text x="885" y="120" text-anchor="middle" font-size="13" font-weight="bold" fill="#17512c">HM-10 BLE module</text>
+  <text x="885" y="140" text-anchor="middle" font-size="11" fill="#17512c">service FFE0 / char FFE1</text>
+  <text x="885" y="158" text-anchor="middle" font-size="11" fill="#17512c">serial bridge</text>
+
+  <!-- arrow 3->4 and 4->3 (two lines, offset) -->
+  <line x1="730" y1="128" x2="798" y2="128" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="764" y="110" text-anchor="middle" font-size="10" fill="#333">"in&lt;amt&gt;" /</text>
+  <text x="764" y="122" text-anchor="middle" font-size="10" fill="#333">button codes</text>
+  <line x1="798" y1="155" x2="730" y2="155" stroke="#b23" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="764" y="172" text-anchor="middle" font-size="10" fill="#b23">wake-up / confirm</text>
+  <text x="764" y="184" text-anchor="middle" font-size="10" fill="#b23">(BLE)</text>
+
+  <!-- 5. Arduino -->
+  <rect x="800" y="250" width="170" height="110" rx="10" fill="#e8f7ec" stroke="#2f8f4e" stroke-width="2"/>
+  <text x="885" y="278" text-anchor="middle" font-size="14" font-weight="bold" fill="#17512c">Arduino</text>
+  <text x="885" y="298" text-anchor="middle" font-size="11" fill="#17512c">arduino_code.ino</text>
+  <text x="885" y="316" text-anchor="middle" font-size="11" fill="#17512c">MsTimer2 (5-min wake)</text>
+  <text x="885" y="334" text-anchor="middle" font-size="11" fill="#17512c">drives 4 output pins</text>
+  <text x="885" y="350" text-anchor="middle" font-size="11" fill="#17512c">(wake / up / ok / down)</text>
+
+  <!-- arrow 4<->5 -->
+  <line x1="885" y1="180" x2="885" y2="248" stroke="#333" stroke-width="2" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <text x="975" y="218" text-anchor="middle" font-size="10" fill="#333">serial</text>
+
+  <!-- 6. Optocouplers -->
+  <rect x="800" y="420" width="170" height="80" rx="10" fill="#f3e8fb" stroke="#7b3fa0" stroke-width="2"/>
+  <text x="885" y="448" text-anchor="middle" font-size="13" font-weight="bold" fill="#4a1f66">Optocouplers</text>
+  <text x="885" y="468" text-anchor="middle" font-size="11" fill="#4a1f66">isolate Arduino from</text>
+  <text x="885" y="484" text-anchor="middle" font-size="11" fill="#4a1f66">glucometer button contacts</text>
+
+  <!-- arrow 5->6 -->
+  <line x1="885" y1="360" x2="885" y2="418" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="950" y="392" text-anchor="middle" font-size="10" fill="#333">4 digital outputs</text>
+
+  <!-- 7. Glucometer -->
+  <rect x="800" y="560" width="170" height="100" rx="10" fill="#fdeaea" stroke="#b23" stroke-width="2"/>
+  <text x="885" y="588" text-anchor="middle" font-size="13" font-weight="bold" fill="#6e1313">Contour Plus</text>
+  <text x="885" y="606" text-anchor="middle" font-size="11" fill="#6e1313">glucometer</text>
+  <text x="885" y="624" text-anchor="middle" font-size="11" fill="#6e1313">remote-bolus menu</text>
+  <text x="885" y="642" text-anchor="middle" font-size="11" fill="#6e1313">driven as if a human</text>
+  <text x="885" y="656" text-anchor="middle" font-size="11" fill="#6e1313">pressed its buttons</text>
+
+  <!-- arrow 6->7 -->
+  <line x1="885" y1="500" x2="885" y2="558" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="970" y="532" text-anchor="middle" font-size="10" fill="#333">simulated button presses</text>
+
+  <!-- 8. Medtronic pump -->
+  <rect x="500" y="560" width="230" height="100" rx="10" fill="#fdeaea" stroke="#b23" stroke-width="2"/>
+  <text x="615" y="588" text-anchor="middle" font-size="14" font-weight="bold" fill="#6e1313">Medtronic insulin pump</text>
+  <text x="615" y="608" text-anchor="middle" font-size="11" fill="#6e1313">(compatible models only)</text>
+  <text x="615" y="626" text-anchor="middle" font-size="11" fill="#6e1313">receives remote-bolus</text>
+  <text x="615" y="644" text-anchor="middle" font-size="11" fill="#6e1313">command from glucometer</text>
+
+  <!-- arrow 7->8 -->
+  <line x1="798" y1="610" x2="732" y2="610" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="764" y="600" text-anchor="middle" font-size="10" fill="#333">RF remote link</text>
+
+  <!-- 9. Injection -->
+  <rect x="230" y="560" width="200" height="100" rx="10" fill="#fdeaea" stroke="#b23" stroke-width="2"/>
+  <text x="330" y="595" text-anchor="middle" font-size="14" font-weight="bold" fill="#6e1313">Insulin injection</text>
+  <text x="330" y="615" text-anchor="middle" font-size="11" fill="#6e1313">delivered subcutaneously</text>
+  <text x="330" y="633" text-anchor="middle" font-size="11" fill="#6e1313">by the pump</text>
+
+  <!-- arrow 8->9 -->
+  <line x1="498" y1="610" x2="432" y2="610" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- feedback loop label -->
+  <text x="600" y="700" text-anchor="middle" font-size="11" fill="#555" font-style="italic">
+    Arduino confirms the injection back to the app over BLE, which logs it in History and starts the next cooldown timer.
+  </text>
+</svg>

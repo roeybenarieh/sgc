@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" font-family="Helvetica, Arial, sans-serif">
+<defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#e6ebf0" stroke-width="1"/></pattern></defs>
+<rect width="1400" height="900" fill="#f7f9fb"/><rect width="1400" height="900" fill="url(#grid)"/>
+<text x="700" y="38" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d2a36">SGC wiring: Arduino + HM-10 + optocouplers + Contour Plus</text>
+<text x="700" y="62" text-anchor="middle" font-size="13" fill="#566">Schematic drawn from the pin definitions in arduino_code.ino. A diagram, not a photo of the build.</text>
+<rect x="40" y="90" width="285" height="770" rx="14" fill="#0b7f87" stroke="#065a60" stroke-width="3"/>
+<rect x="40" y="120" width="60" height="70" rx="4" fill="#c9d0d6" stroke="#6b7680" stroke-width="2"/>
+<text x="70" y="160" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">USB</text>
+<text x="182" y="450" font-size="24" fill="#e8fbfc" text-anchor="middle" font-weight="bold">ARDUINO UNO</text>
+<text x="182" y="478" font-size="12" fill="#bdeef1" text-anchor="middle" font-weight="normal">(any AVR board with these pins)</text>
+<rect x="318" y="100" width="14" height="750" fill="#222"/>
+<circle cx="325" cy="125" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="306" y="129" font-size="13" fill="#fff" text-anchor="end" font-weight="bold">D4</text>
+<circle cx="325" cy="195" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="306" y="199" font-size="13" fill="#fff" text-anchor="end" font-weight="bold">D3</text>
+<circle cx="325" cy="295" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="306" y="299" font-size="13" fill="#fff" text-anchor="end" font-weight="bold">5V</text>
+<circle cx="325" cy="345" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="306" y="349" font-size="13" fill="#fff" text-anchor="end" font-weight="bold">GND</text>
+<circle cx="325" cy="475" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="306" y="479" font-size="13" fill="#fff" text-anchor="end" font-weight="bold">D2</text>
+<circle cx="325" cy="565" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="306" y="569" font-size="13" fill="#fff" text-anchor="end" font-weight="bold">D7</text>
+<circle cx="325" cy="655" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="306" y="659" font-size="13" fill="#fff" text-anchor="end" font-weight="bold">D8</text>
+<circle cx="325" cy="745" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="306" y="749" font-size="13" fill="#fff" text-anchor="end" font-weight="bold">D13</text>
+<rect x="520" y="95" width="170" height="285" rx="10" fill="#1f5f99" stroke="#143f68" stroke-width="3"/>
+<text x="605" y="205" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold">HM-10</text>
+<text x="605" y="228" font-size="12" fill="#cfe3f7" text-anchor="middle" font-weight="normal">BLE serial module</text>
+<text x="605" y="246" font-size="11" fill="#cfe3f7" text-anchor="middle" font-weight="normal">service FFE0 / char FFE1</text>
+<text x="605" y="264" font-size="11" fill="#cfe3f7" text-anchor="middle" font-weight="normal">9600 baud</text>
+<circle cx="520" cy="125" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="534" y="129" font-size="12" fill="#fff" text-anchor="start" font-weight="bold">TXD</text>
+<circle cx="520" cy="195" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="534" y="199" font-size="12" fill="#fff" text-anchor="start" font-weight="bold">RXD</text>
+<circle cx="520" cy="295" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="534" y="299" font-size="12" fill="#fff" text-anchor="start" font-weight="bold">VCC</text>
+<circle cx="520" cy="345" r="5" fill="#f2c744" stroke="#fff" stroke-width="1.5"/>
+<text x="534" y="349" font-size="12" fill="#fff" text-anchor="start" font-weight="bold">GND</text>
+<polyline points="325,125 520,125" fill="none" stroke="#8e44ad" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="420" y="115" font-size="11" fill="#6c3483" text-anchor="middle" font-weight="normal">D4 = SoftwareSerial RX</text>
+<polyline points="325,195 380,195" fill="none" stroke="#7f8c8d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="436,195 520,195" fill="none" stroke="#7f8c8d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="386" y="186" width="44" height="18" rx="3" fill="#e8c98f" stroke="#7a5a1e" stroke-width="2"/>
+<text x="408" y="219" font-size="11" fill="#5b4210" text-anchor="middle" font-weight="normal">1 k&#937;</text>
+<circle cx="470" cy="195" r="5" fill="#7f8c8d" stroke="#fff" stroke-width="1.5"/>
+<polyline points="470,195 470,218" fill="none" stroke="#7f8c8d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="461" y="218" width="18" height="40" rx="3" fill="#e8c98f" stroke="#7a5a1e" stroke-width="2"/>
+<text x="486" y="242" font-size="11" fill="#5b4210" text-anchor="start" font-weight="normal">2 k&#937;</text>
+<polyline points="470,258 470,272" fill="none" stroke="#7f8c8d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<g stroke="#222" stroke-width="2"><line x1="470" y1="272" x2="470" y2="280"/><line x1="461" y1="280" x2="479" y2="280"/><line x1="464" y1="284" x2="476" y2="284"/><line x1="467" y1="288" x2="473" y2="288"/></g>
+<text x="420" y="168" font-size="11" fill="#555" text-anchor="middle" font-weight="normal">D3 = SoftwareSerial TX</text>
+<polyline points="325,295 520,295" fill="none" stroke="#c0392b" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="420" y="286" font-size="11" fill="#a93226" text-anchor="middle" font-weight="normal">5 V</text>
+<polyline points="325,345 520,345" fill="none" stroke="#222" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="420" y="336" font-size="11" fill="#222" text-anchor="middle" font-weight="normal">GND</text>
+<rect x="640" y="441" width="160" height="68" rx="8" fill="#2c3e50" stroke="#1b2631" stroke-width="3"/>
+<text x="720" y="463" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">OPTOCOUPLER 1</text>
+<text x="720" y="481" font-size="12" fill="#d6eaf8" text-anchor="middle" font-weight="normal">WAKE button</text>
+<text x="720" y="499" font-size="10" fill="#aab7c4" text-anchor="middle" font-weight="normal">LED &#8594; phototransistor</text>
+<polyline points="325,475 395,475" fill="none" stroke="#e67e22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="395" y="466" width="44" height="18" rx="3" fill="#e8c98f" stroke="#7a5a1e" stroke-width="2"/>
+<text x="417" y="461" font-size="11" fill="#5b4210" text-anchor="middle" font-weight="normal">R</text>
+<polyline points="439,475 560,475 560,461 640,461" fill="none" stroke="#e67e22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="640" cy="461" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<circle cx="640" cy="491" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<polyline points="615,491 640,491" fill="none" stroke="#222" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<g stroke="#222" stroke-width="2"><line x1="615" y1="491" x2="615" y2="499"/><line x1="606" y1="499" x2="624" y2="499"/><line x1="609" y1="503" x2="621" y2="503"/><line x1="612" y1="507" x2="618" y2="507"/></g>
+<text x="520" y="455" font-size="12" fill="#e67e22" text-anchor="middle" font-weight="bold">D2</text>
+<circle cx="800" cy="461" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<circle cx="800" cy="491" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<polyline points="800,461 1010,461" fill="none" stroke="#34495e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="800,491 930,491" fill="none" stroke="#7f8c8d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="640" y="531" width="160" height="68" rx="8" fill="#2c3e50" stroke="#1b2631" stroke-width="3"/>
+<text x="720" y="553" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">OPTOCOUPLER 2</text>
+<text x="720" y="571" font-size="12" fill="#d6eaf8" text-anchor="middle" font-weight="normal">DOWN button</text>
+<text x="720" y="589" font-size="10" fill="#aab7c4" text-anchor="middle" font-weight="normal">LED &#8594; phototransistor</text>
+<polyline points="325,565 395,565" fill="none" stroke="#27ae60" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="395" y="556" width="44" height="18" rx="3" fill="#e8c98f" stroke="#7a5a1e" stroke-width="2"/>
+<text x="417" y="551" font-size="11" fill="#5b4210" text-anchor="middle" font-weight="normal">R</text>
+<polyline points="439,565 560,565 560,551 640,551" fill="none" stroke="#27ae60" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="640" cy="551" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<circle cx="640" cy="581" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<polyline points="615,581 640,581" fill="none" stroke="#222" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<g stroke="#222" stroke-width="2"><line x1="615" y1="581" x2="615" y2="589"/><line x1="606" y1="589" x2="624" y2="589"/><line x1="609" y1="593" x2="621" y2="593"/><line x1="612" y1="597" x2="618" y2="597"/></g>
+<text x="520" y="545" font-size="12" fill="#27ae60" text-anchor="middle" font-weight="bold">D7</text>
+<circle cx="800" cy="551" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<circle cx="800" cy="581" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<polyline points="800,551 1010,551" fill="none" stroke="#34495e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="800,581 930,581" fill="none" stroke="#7f8c8d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="640" y="621" width="160" height="68" rx="8" fill="#2c3e50" stroke="#1b2631" stroke-width="3"/>
+<text x="720" y="643" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">OPTOCOUPLER 3</text>
+<text x="720" y="661" font-size="12" fill="#d6eaf8" text-anchor="middle" font-weight="normal">OK button</text>
+<text x="720" y="679" font-size="10" fill="#aab7c4" text-anchor="middle" font-weight="normal">LED &#8594; phototransistor</text>
+<polyline points="325,655 395,655" fill="none" stroke="#2e86de" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="395" y="646" width="44" height="18" rx="3" fill="#e8c98f" stroke="#7a5a1e" stroke-width="2"/>
+<text x="417" y="641" font-size="11" fill="#5b4210" text-anchor="middle" font-weight="normal">R</text>
+<polyline points="439,655 560,655 560,641 640,641" fill="none" stroke="#2e86de" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="640" cy="641" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<circle cx="640" cy="671" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<polyline points="615,671 640,671" fill="none" stroke="#222" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<g stroke="#222" stroke-width="2"><line x1="615" y1="671" x2="615" y2="679"/><line x1="606" y1="679" x2="624" y2="679"/><line x1="609" y1="683" x2="621" y2="683"/><line x1="612" y1="687" x2="618" y2="687"/></g>
+<text x="520" y="635" font-size="12" fill="#2e86de" text-anchor="middle" font-weight="bold">D8</text>
+<circle cx="800" cy="641" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<circle cx="800" cy="671" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<polyline points="800,641 1010,641" fill="none" stroke="#34495e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="800,671 930,671" fill="none" stroke="#7f8c8d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="640" y="711" width="160" height="68" rx="8" fill="#2c3e50" stroke="#1b2631" stroke-width="3"/>
+<text x="720" y="733" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">OPTOCOUPLER 4</text>
+<text x="720" y="751" font-size="12" fill="#d6eaf8" text-anchor="middle" font-weight="normal">UP button</text>
+<text x="720" y="769" font-size="10" fill="#aab7c4" text-anchor="middle" font-weight="normal">LED &#8594; phototransistor</text>
+<polyline points="325,745 395,745" fill="none" stroke="#d4ac0d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="395" y="736" width="44" height="18" rx="3" fill="#e8c98f" stroke="#7a5a1e" stroke-width="2"/>
+<text x="417" y="731" font-size="11" fill="#5b4210" text-anchor="middle" font-weight="normal">R</text>
+<polyline points="439,745 560,745 560,731 640,731" fill="none" stroke="#d4ac0d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="640" cy="731" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<circle cx="640" cy="761" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<polyline points="615,761 640,761" fill="none" stroke="#222" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<g stroke="#222" stroke-width="2"><line x1="615" y1="761" x2="615" y2="769"/><line x1="606" y1="769" x2="624" y2="769"/><line x1="609" y1="773" x2="621" y2="773"/><line x1="612" y1="777" x2="618" y2="777"/></g>
+<text x="520" y="725" font-size="12" fill="#d4ac0d" text-anchor="middle" font-weight="bold">D13</text>
+<circle cx="800" cy="731" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<circle cx="800" cy="761" r="5" fill="#222" stroke="#fff" stroke-width="1.5"/>
+<polyline points="800,731 1010,731" fill="none" stroke="#34495e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="800,761 930,761" fill="none" stroke="#7f8c8d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="930,491 930,761 930,812 1010,812" fill="none" stroke="#7f8c8d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="930" cy="491" r="5" fill="#7f8c8d" stroke="#fff" stroke-width="1.5"/>
+<circle cx="930" cy="581" r="5" fill="#7f8c8d" stroke="#fff" stroke-width="1.5"/>
+<circle cx="930" cy="671" r="5" fill="#7f8c8d" stroke="#fff" stroke-width="1.5"/>
+<circle cx="930" cy="761" r="5" fill="#7f8c8d" stroke="#fff" stroke-width="1.5"/>
+<text x="924" y="835" font-size="11" fill="#566" text-anchor="end" font-weight="normal">common</text>
+<rect x="1010" y="395" width="340" height="465" rx="40" fill="#e9eef2" stroke="#7b8794" stroke-width="3"/>
+<text x="1180" y="425" font-size="16" fill="#2c3e50" text-anchor="middle" font-weight="bold">CONTOUR PLUS</text>
+<text x="1180" y="444" font-size="11" fill="#566" text-anchor="middle" font-weight="normal">glucometer (remote-bolus menu)</text>
+<rect x="1050" y="455" width="260" height="0" fill="none"/>
+<circle cx="1075" cy="461" r="16" fill="#fff" stroke="#e67e22" stroke-width="4"/>
+<text x="1105" y="466" font-size="13" fill="#2c3e50" text-anchor="start" font-weight="bold">WAKE</text>
+<text x="1105" y="483" font-size="10" fill="#667" text-anchor="start" font-weight="normal">hold 7 s</text>
+<circle cx="1010" cy="461" r="5" fill="#34495e"/>
+<line x1="1010" y1="461" x2="1059" y2="461" stroke="#34495e" stroke-width="3"/>
+<circle cx="1075" cy="551" r="16" fill="#fff" stroke="#27ae60" stroke-width="4"/>
+<text x="1105" y="556" font-size="13" fill="#2c3e50" text-anchor="start" font-weight="bold">DOWN</text>
+<text x="1105" y="573" font-size="10" fill="#667" text-anchor="start" font-weight="normal">tap 200 ms</text>
+<circle cx="1010" cy="551" r="5" fill="#34495e"/>
+<line x1="1010" y1="551" x2="1059" y2="551" stroke="#34495e" stroke-width="3"/>
+<circle cx="1075" cy="641" r="16" fill="#fff" stroke="#2e86de" stroke-width="4"/>
+<text x="1105" y="646" font-size="13" fill="#2c3e50" text-anchor="start" font-weight="bold">OK</text>
+<text x="1105" y="663" font-size="10" fill="#667" text-anchor="start" font-weight="normal">tap 200 ms</text>
+<circle cx="1010" cy="641" r="5" fill="#34495e"/>
+<line x1="1010" y1="641" x2="1059" y2="641" stroke="#34495e" stroke-width="3"/>
+<circle cx="1075" cy="731" r="16" fill="#fff" stroke="#d4ac0d" stroke-width="4"/>
+<text x="1105" y="736" font-size="13" fill="#2c3e50" text-anchor="start" font-weight="bold">UP</text>
+<text x="1105" y="753" font-size="10" fill="#667" text-anchor="start" font-weight="normal">tap 200 ms</text>
+<circle cx="1010" cy="731" r="5" fill="#34495e"/>
+<line x1="1010" y1="731" x2="1059" y2="731" stroke="#34495e" stroke-width="3"/>
+<circle cx="1010" cy="812" r="5" fill="#34495e"/>
+<text x="1030" y="816" font-size="11" fill="#566" text-anchor="start" font-weight="normal">COM (shared button contact)</text>
+<rect x="860" y="95" width="490" height="270" rx="10" fill="#fff" stroke="#c5ced6" stroke-width="2"/>
+<text x="880" y="122" font-size="15" fill="#1d2a36" text-anchor="start" font-weight="bold">How it works</text>
+<text x="880" y="146" font-size="12" fill="#334" text-anchor="start" font-weight="normal">The app sends commands to the HM-10 over BLE. The Arduino turns</text>
+<text x="880" y="164" font-size="12" fill="#334" text-anchor="start" font-weight="normal">each output pin HIGH for a short time. Each optocoupler 'presses'</text>
+<text x="880" y="182" font-size="12" fill="#334" text-anchor="start" font-weight="normal">one meter button by closing its contacts, without a direct electrical</text>
+<text x="880" y="200" font-size="12" fill="#334" text-anchor="start" font-weight="normal">connection to the meter's electronics.</text>
+<text x="880" y="218" font-size="12" fill="#334" text-anchor="start" font-weight="normal">Pins held HIGH: WAKE 7 s, UP / OK / DOWN 200 ms (see push_button()).</text>
+<text x="880" y="252" font-size="14" fill="#a04000" text-anchor="start" font-weight="bold">Assumptions to verify (not specified in the repo)</text>
+<text x="880" y="274" font-size="11.5" fill="#5d4037" text-anchor="start" font-weight="normal">&#8226; Resistor values (1 k&#937; / 2 k&#937; divider and the LED resistors 'R')</text>
+<text x="880" y="291" font-size="11.5" fill="#5d4037" text-anchor="start" font-weight="normal">  are typical; size them from your optocoupler and Arduino datasheets.</text>
+<text x="880" y="308" font-size="11.5" fill="#5d4037" text-anchor="start" font-weight="normal">&#8226; Part numbers: the sketch names none.</text>
+<text x="880" y="325" font-size="11.5" fill="#5d4037" text-anchor="start" font-weight="normal">&#8226; Where each optocoupler output attaches inside the meter depends on</text>
+<text x="880" y="342" font-size="11.5" fill="#5d4037" text-anchor="start" font-weight="normal">  its PCB; check yours before soldering. 'COM' assumes a shared line.</text>
+</svg>
